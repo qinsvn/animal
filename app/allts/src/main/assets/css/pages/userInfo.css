@@ -1,0 +1,79 @@
+.container {
+	padding-bottom: 30px;
+}
+
+.headerBox {
+	padding: 15px 15px 0;
+}
+
+.headerBox-color {
+	background-color: #afc8e6;
+}
+
+.headerBox .headerBox-l {
+	width: 100px;
+	height: 100px;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #1FABEA;
+}
+
+.headerBox .headerBox-l img {
+	width: 100%;
+	height: 100%;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.headerBox .headerBox-r {
+	flex: 1;
+/* 	height: 100px; */
+	padding-left: 15px;
+	padding-bottom: 7px;
+}
+
+.headerBox .headerBox-r .headerBox-r-t {
+	font-size: 16px;
+	color: #444;
+	font-weight: 600;
+}
+
+.headerBox .headerBox-r .headerBox-r-b {
+/* 	margin-top: 20px; */
+	color: #444444;
+	font-size: 15px;
+}
+
+.headerBox .headerBox-r .headerBox-r-b span {
+	margin-right: 20px;
+}
+
+.headerBox .headerBox-r .headerBox-r-b span:first-of-type {
+	margin-right: 30px;
+}
+
+.weui-cell_select {
+	padding-left: 15px;
+}
+
+.weui-select {
+	padding-left: 0;
+}
+
+.weui-switch:checked {
+	border-color: #1FABEA;
+	background-color: #1FABEA;
+}
+
+.submitBtn {
+	width: 80%;
+	padding: 10px 0;
+	line-height: 1;
+	margin: 30px auto 0;
+	color: #FFFFFF;
+	background-color: #299FE3;
+	/*background-image: linear-gradient(#00CAF9, #3D80D4);
+	background-image: -ms-linear-gradient(#00CAF9, #3D80D4);
+	background-image: -webkit-linear-gradient(#00CAF9, #3D80D4);
+	background-image: -moz-linear-gradient(#00CAF9, #3D80D4);*/
+}

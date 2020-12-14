@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ts.animal.dao.ExInputsDao"> 
+	<select id="list" resultType="java.util.Map">
+		select
+				bs_inputs.`id`,
+				bs_inputs.`num`,
+				bs_inputs.`batch_num`,
+				bs_inputs.`type_name`,
+				bs_inputs.`variety_name`,
+				bs_inputs.`init_weight`,
+				bs_inputs.`cur_weight`,
+				bs_inputs.`dept_id`,
+				bs_inputs.`space_id`,
+				bs_inputs.`other_info`,
+				bs_inputs.`status`,
+				bs_inputs.`create_user`,
+				bs_inputs.`create_time`,
+				bs_inputs.`update_user`,
+				bs_inputs.`update_time`,
+				bs_inputs.`remark1`,
+				bs_inputs.`remark2`,
+				bs_inputs.`remark3`,
+			    bs_space.name space_name,
+			    bs_supplier.`name` supplier_name
+       from bs_inputs
+  left join bs_space on bs_inputs.space_id = bs_space.id
+  left join bs_supplier on bs_inputs.supplier_id = bs_supplier.id
+<include refid="com.ts.system.dao.DeptDao.subDept"/>
+<include refid="com.ts.system.dao.DeptDao.subDeptByUser" /> 
+         <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="num != null and num != ''"> and num = #{num} </if>
+		  		  <if test="batchNum != null and batchNum != ''"> and batch_num = #{batchNum} </if>
+		  		  <if test="typeName != null and typeName != ''"> and type_name = #{typeName} </if>
+		  		  <if test="varietyName != null and varietyName != ''"> and variety_name = #{varietyName} </if>
+		  		  <if test="initWeight != null and initWeight != ''"> and init_weight = #{initWeight} </if>
+		  		  <if test="curWeight != null and curWeight != ''"> and cur_weight = #{curWeight} </if>
+		  		  <if test="deptId != null and deptId != ''"> and dept_id = #{deptId} </if>
+		  		  <if test="spaceId != null and spaceId != ''"> and space_id = #{spaceId} </if>
+		  		  <if test="supplierId != null and supplierId != ''"> and supplier_id = #{supplierId} </if>
+		  		  <if test="otherInfo != null and otherInfo != ''"> and other_info = #{otherInfo} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateUser != null and updateUser != ''"> and update_user = #{updateUser} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="remark1 != null and remark1 != ''"> and  bs_inputs.remark1 = #{remark1} </if>
+		  		  <if test="remark2 != null and remark2 != ''"> and  bs_inputs.remark2 = #{remark2} </if>
+		  		  <if test="remark3 != null and remark3 != ''"> and  bs_inputs.remark3 = #{remark3} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+</mapper>

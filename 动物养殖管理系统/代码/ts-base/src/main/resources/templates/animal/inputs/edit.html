@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${inputs.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">编号<em class="gg-star">*</em>：</label>
+								<div class="col-sm-8">
+									<input id="num" name="num" th:value="${inputs.num}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">批次<em class="gg-star">*</em>：</label>
+								<div class="col-sm-8">
+									<input id="batchNum" name="batchNum" th:value="${inputs.batchNum}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">种类<em class="gg-star">*</em>：</label>
+								<div class="col-sm-8">
+<!-- 									<input id="typeName" name="typeName" th:value="${inputs.typeName}" class="form-control" type="text"> -->
+									<sys:dict type="animal_type" id="typeName" name="typeName"  th:value="${inputs.typeName}" class="form-control" firstValue="" firstText="请选择种类" onchange="sub.resetDict('typeName','varietyName')"  /> 
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">品种<em class="gg-star">*</em>：</label>
+								<div class="col-sm-8">
+<!-- 									<input id="varietyName" name="varietyName" th:value="${inputs.varietyName}" class="form-control" type="text"> -->
+									<sys:dict type="animal_varieties" id="varietyName" name="varietyName" class="form-control"  th:value="${inputs.varietyName}"    firstValue="" firstText="请选择品种"  />
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">最初体重：</label>
+								<div class="col-sm-8">
+									<input id="initWeight" name="initWeight" th:value="${inputs.initWeight}" class="form-control" type="text" disabled>
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">目前体重：</label>
+								<div class="col-sm-8">
+									<input id="curWeight" name="curWeight" th:value="${inputs.curWeight}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">所属养殖户：</label>
+								<div class="col-sm-8">
+<!-- 									<input id="deptId" name="deptId" th:value="${inputs.deptId}" class="form-control" type="text"> -->
+									<sys:dict th:onload="'get:system/sysDept/dict/list?cDeptId='+${session.sysUser.deptId}"
+									               th:value="${inputs.deptId}"  valueText="deptId" nameText="name" 
+									  			   id="deptId" name="deptId" class="form-control"  onchange="sub.resetDictByDept('deptId','spaceId')" 
+									  			   firstValue="" firstText="请选择养殖户"  />
+								</div>
+							</div>
+							
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">入住场地：</label>
+								<div class="col-sm-8">
+										<sys:dict th:onload="'get:animal/space/dict/list?cDeptId='+${session.sysUser.deptId}" 
+										  th:value="${inputs.spaceId}" superValueText="deptId" valueText="id" nameText="name"  id="spaceId" name="spaceId" 
+										class="form-control"  style=""  firstValue=""  firstText="请选择场地"  />
+										
+								</div>
+							</div>
+							
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">供应商：</label>
+								<div class="col-sm-8">
+										<sys:dict th:onload="'get:animal/supplier/dict/list?cDeptId='+${session.sysUser.deptId}" 
+										 th:value="${inputs.supplierId}" superValueText="deptId" valueText="id" nameText="name"  id="supplierId" name="supplierId" 
+										class="form-control"  style=""  firstValue=""  firstText="请选择供应商"  />
+										
+								</div>
+							</div>
+							
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">其他信息：</label>
+								<div class="col-sm-8">
+									<input id="otherInfo" name="otherInfo" th:value="${inputs.otherInfo}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">状态：</label>
+								<div class="col-sm-8">
+									<sys:dict type="inputs_status" id="status" name="status"  th:value="${inputs.status}"  class="form-control"   style="width: 178px"  firstValue="0" firstText="请选择状态"  />
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">录入人员：</label>
+								<div class="col-sm-8">
+									<input id="createUser" name="createUser" th:value="${sysUsers[inputs.createUser].name}" class="form-control" type="text"  disabled>
+<!-- <div th:each="sysUser:${sysUsers}"> -->
+<!--         <a th:each="entry:${sysUser}" th:text="${entry.key==1}"></a> -->
+<!--         <a th:each="entry:${sysUser}" th:text="${entry.value.name}"></a> -->
+<!--     </div> -->
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="js/appjs/animal/inputs/edit.js">
+	</script>
+</body>
+</html>

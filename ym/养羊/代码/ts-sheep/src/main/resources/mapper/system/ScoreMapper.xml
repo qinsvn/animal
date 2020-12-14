@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ts.system.dao.ScoreDao">
+
+	<select id="get" resultType="com.ts.system.domain.ScoreDO">
+		select `cid`,`title`,`radio1`,`radio2`,`radio3`,`radio4`,`radio5`,`isremark`,`autosend` from tb_score where cid = #{value}
+	</select>
+
+	<select id="list" resultType="com.ts.system.domain.ScoreDO">
+		select `cid`,`title`,`radio1`,`radio2`,`radio3`,`radio4`,`radio5`,`isremark`,`autosend` from tb_score
+        <where>  
+		  		  <if test="cid != null and cid != ''"> and cid = #{cid} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="radio1 != null and radio1 != ''"> and radio1 = #{radio1} </if>
+		  		  <if test="radio2 != null and radio2 != ''"> and radio2 = #{radio2} </if>
+		  		  <if test="radio3 != null and radio3 != ''"> and radio3 = #{radio3} </if>
+		  		  <if test="radio4 != null and radio4 != ''"> and radio4 = #{radio4} </if>
+		  		  <if test="radio5 != null and radio5 != ''"> and radio5 = #{radio5} </if>
+		  		  <if test="isremark != null and isremark != ''"> and isremark = #{isremark} </if>
+		  		  <if test="autosend != null and autosend != ''"> and autosend = #{autosend} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by cid desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from tb_score
+		 <where>  
+		  		  <if test="cid != null and cid != ''"> and cid = #{cid} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="radio1 != null and radio1 != ''"> and radio1 = #{radio1} </if>
+		  		  <if test="radio2 != null and radio2 != ''"> and radio2 = #{radio2} </if>
+		  		  <if test="radio3 != null and radio3 != ''"> and radio3 = #{radio3} </if>
+		  		  <if test="radio4 != null and radio4 != ''"> and radio4 = #{radio4} </if>
+		  		  <if test="radio5 != null and radio5 != ''"> and radio5 = #{radio5} </if>
+		  		  <if test="isremark != null and isremark != ''"> and isremark = #{isremark} </if>
+		  		  <if test="autosend != null and autosend != ''"> and autosend = #{autosend} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.ts.system.domain.ScoreDO">
+		insert into tb_score
+		(
+			`cid`, 
+			`title`, 
+			`radio1`, 
+			`radio2`, 
+			`radio3`, 
+			`radio4`, 
+			`radio5`, 
+			`isremark`, 
+			`autosend`
+		)
+		values
+		(
+			#{cid}, 
+			#{title}, 
+			#{radio1}, 
+			#{radio2}, 
+			#{radio3}, 
+			#{radio4}, 
+			#{radio5}, 
+			#{isremark}, 
+			#{autosend}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.ts.system.domain.ScoreDO">
+		update tb_score 
+		<set>
+			<if test="title != null">`title` = #{title}, </if>
+			<if test="radio1 != null">`radio1` = #{radio1}, </if>
+			<if test="radio2 != null">`radio2` = #{radio2}, </if>
+			<if test="radio3 != null">`radio3` = #{radio3}, </if>
+			<if test="radio4 != null">`radio4` = #{radio4}, </if>
+			<if test="radio5 != null">`radio5` = #{radio5}, </if>
+			<if test="isremark != null">`isremark` = #{isremark}, </if>
+			<if test="autosend != null">`autosend` = #{autosend}</if>
+		</set>
+		where cid = #{cid}
+	</update>
+	
+	<delete id="remove">
+		delete from tb_score where cid = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from tb_score where cid in 
+		<foreach item="cid" collection="array" open="(" separator="," close=")">
+			#{cid}
+		</foreach>
+	</delete>
+
+</mapper>

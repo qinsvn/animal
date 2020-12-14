@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ts.animal.dao.InputsDao">
+
+	<select id="get" resultType="com.ts.animal.domain.InputsDO">
+		select `id`,`num`,`batch_num`,`type_name`,`variety_name`,`init_weight`,`cur_weight`,`dept_id`,`space_id`,`supplier_id`,`other_info`,`status`,`birthday`,`parent_id`,`parent_num`,`pparent_num`,`create_user`,`create_time`,`update_user`,`update_time`,`remark1`,`remark2`,`remark3` from bs_inputs where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.ts.animal.domain.InputsDO">
+		select `id`,`num`,`batch_num`,`type_name`,`variety_name`,`init_weight`,`cur_weight`,`dept_id`,`space_id`,`supplier_id`,`other_info`,`status`,`birthday`,`parent_id`,`parent_num`,`pparent_num`,`create_user`,`create_time`,`update_user`,`update_time`,`remark1`,`remark2`,`remark3` from bs_inputs
+		<include refid="com.ts.system.dao.DeptDao.subDept"/>
+		<include refid="com.ts.system.dao.DeptDao.subDeptByUser" />
+		<where>
+			<if test="id != null and id != ''"> and id = #{id} </if>
+			<if test="num != null and num != ''"> and num = #{num} </if>
+			<if test="batchNum != null and batchNum != ''"> and batch_num = #{batchNum} </if>
+			<if test="typeName != null and typeName != ''"> and type_name = #{typeName} </if>
+			<if test="varietyName != null and varietyName != ''"> and variety_name = #{varietyName} </if>
+			<if test="initWeight != null and initWeight != ''"> and init_weight = #{initWeight} </if>
+			<if test="curWeight != null and curWeight != ''"> and cur_weight = #{curWeight} </if>
+			<if test="deptId != null and deptId != ''"> and dept_id = #{deptId} </if>
+			<if test="spaceId != null and spaceId != ''"> and space_id = #{spaceId} </if>
+			<if test="supplierId != null and supplierId != ''"> and supplier_id = #{supplierId} </if>
+			<if test="otherInfo != null and otherInfo != ''"> and other_info = #{otherInfo} </if>
+			<if test="status != null and status != ''"> and status = #{status} </if>
+			<if test="birthday != null and birthday != ''"> and birthday = #{birthday} </if>
+			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+			<if test="parentNum != null and parentNum != ''"> and parent_num = #{parentNum} </if>
+			<if test="pparentNum != null and pparentNum != ''"> and pparent_num = #{pparentNum} </if>
+			<if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+			<if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+			<if test="updateUser != null and updateUser != ''"> and update_user = #{updateUser} </if>
+			<if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+			<if test="remark1 != null and remark1 != ''"> and remark1 = #{remark1} </if>
+			<if test="remark2 != null and remark2 != ''"> and remark2 = #{remark2} </if>
+			<if test="remark3 != null and remark3 != ''"> and remark3 = #{remark3} </if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by id desc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="count" resultType="int">
+		select count(*) from bs_inputs
+		<where>
+			<if test="id != null and id != ''"> and id = #{id} </if>
+			<if test="num != null and num != ''"> and num = #{num} </if>
+			<if test="batchNum != null and batchNum != ''"> and batch_num = #{batchNum} </if>
+			<if test="typeName != null and typeName != ''"> and type_name = #{typeName} </if>
+			<if test="varietyName != null and varietyName != ''"> and variety_name = #{varietyName} </if>
+			<if test="initWeight != null and initWeight != ''"> and init_weight = #{initWeight} </if>
+			<if test="curWeight != null and curWeight != ''"> and cur_weight = #{curWeight} </if>
+			<if test="deptId != null and deptId != ''"> and dept_id = #{deptId} </if>
+			<if test="spaceId != null and spaceId != ''"> and space_id = #{spaceId} </if>
+			<if test="supplierId != null and supplierId != ''"> and supplier_id = #{supplierId} </if>
+			<if test="otherInfo != null and otherInfo != ''"> and other_info = #{otherInfo} </if>
+			<if test="status != null and status != ''"> and status = #{status} </if>
+			<if test="birthday != null and birthday != ''"> and birthday = #{birthday} </if>
+			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+			<if test="parentNum != null and parentNum != ''"> and parent_num = #{parentNum} </if>
+			<if test="pparentNum != null and pparentNum != ''"> and pparent_num = #{pparentNum} </if>
+			<if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+			<if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+			<if test="updateUser != null and updateUser != ''"> and update_user = #{updateUser} </if>
+			<if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+			<if test="remark1 != null and remark1 != ''"> and remark1 = #{remark1} </if>
+			<if test="remark2 != null and remark2 != ''"> and remark2 = #{remark2} </if>
+			<if test="remark3 != null and remark3 != ''"> and remark3 = #{remark3} </if>
+		</where>
+	</select>
+
+	<insert id="save" parameterType="com.ts.animal.domain.InputsDO" useGeneratedKeys="true" keyProperty="id">
+		insert into bs_inputs
+		(
+			`num`,
+			`batch_num`,
+			`type_name`,
+			`variety_name`,
+			`init_weight`,
+			`cur_weight`,
+			`dept_id`,
+			`space_id`,
+			`supplier_id`,
+			`other_info`,
+			`status`,
+			`birthday`,
+			`parent_id`,
+			`parent_num`,
+			`pparent_num`,
+			`create_user`,
+			`create_time`,
+			`update_user`,
+			`update_time`,
+			`remark1`,
+			`remark2`,
+			`remark3`
+		)
+		values
+		(
+			#{num},
+			#{batchNum},
+			#{typeName},
+			#{varietyName},
+			#{initWeight},
+			#{curWeight},
+			#{deptId},
+			#{spaceId},
+			#{supplierId},
+			#{otherInfo},
+			#{status},
+			#{birthday},
+			#{parentId},
+			#{parentNum},
+			#{pparentNum},
+			#{createUser},
+			#{createTime},
+			#{updateUser},
+			#{updateTime},
+			#{remark1},
+			#{remark2},
+			#{remark3}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.ts.animal.domain.InputsDO">
+		update bs_inputs
+		<set>
+			<if test="num != null">`num` = #{num}, </if>
+			<if test="batchNum != null">`batch_num` = #{batchNum}, </if>
+			<if test="typeName != null">`type_name` = #{typeName}, </if>
+			<if test="varietyName != null">`variety_name` = #{varietyName}, </if>
+			<if test="initWeight != null">`init_weight` = #{initWeight}, </if>
+			<if test="curWeight != null">`cur_weight` = #{curWeight}, </if>
+			<if test="deptId != null">`dept_id` = #{deptId}, </if>
+			<if test="spaceId != null">`space_id` = #{spaceId}, </if>
+			<if test="supplierId != null">`supplier_id` = #{supplierId}, </if>
+			<if test="otherInfo != null">`other_info` = #{otherInfo}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="birthday != null">`birthday` = #{birthday}, </if>
+			<if test="parentId != null">`parent_id` = #{parentId}, </if>
+			<if test="parentNum != null">`parent_num` = #{parentNum}, </if>
+			<if test="pparentNum != null">`pparent_num` = #{pparentNum}, </if>
+			<if test="createUser != null">`create_user` = #{createUser}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="updateUser != null">`update_user` = #{updateUser}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="remark1 != null">`remark1` = #{remark1}, </if>
+			<if test="remark2 != null">`remark2` = #{remark2}, </if>
+			<if test="remark3 != null">`remark3` = #{remark3}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="remove">
+		delete from bs_inputs where id = #{value}
+	</delete>
+
+	<delete id="batchRemove">
+		delete from bs_inputs where id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

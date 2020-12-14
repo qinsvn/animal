@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/border.css" />
+		<link rel="stylesheet" type="text/css" href="css/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/pages/login.css" />
+	</head>
+
+	<body>
+
+		<section class="container wx-flex" id="section">
+			<div class="logoBox">
+				<p>当前服务不可用 请切换服务器</p>
+			</div>
+			<div class="formBox weui-cells weui-cells_form">
+				<div class="weui-cell">
+					<div class="weui-cell__hd"><label class="weui-label">域名</label></div>
+					<div class="weui-cell__bd">
+						<input type="text"  id="host" class="weui-input">
+					</div>
+				</div>
+				<div class="weui-cell">
+					<div class="weui-cell__hd"><label class="weui-label">代码</label></div>
+					<div class="weui-cell__bd">
+						<input type="text" id="project" class="weui-input">
+					</div>
+				</div>
+			</div>
+			<a class="weui-btn weui-btn_default submitBtn" href="javascript:" onclick="change()">确认切换</a>
+
+		</section>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery-weui.min.js"></script>
+		<script type="text/javascript" src="js/template-web.js"></script>
+		<script type="text/javascript">
+			function change(){
+				var host = $('#host').val();
+				var project = $('#project').val();
+				var params = {};
+				params.id=Math.random()+'';
+				params.code='0';//成功
+				params.type='5';//设置系统参数
+				params.data={};
+				params.data.host = host;
+				params.data.project = project;
+				androidJSaction(params);
+				self.location.href="http://"+host+"/"+project.split('#')[0]+"/index?from=mobile";
+			}
+
+			//接收安卓发送过来的数据
+			function receiveAndroid(msg){
+				 var objMap = JSON.parse(msg);
+				 if(objMap.code=='0'){//成功
+					 if(objMap.type=='4'){//返回系统参数
+					 	$('#host').val(objMap.data.host);
+					 	$('#project').val(objMap.data.project);
+					 }
+				 }
+			}
+
+		  function androidJSaction(params ){
+			 var msg = JSON.stringify(params);
+			 window.androidJS.action(msg);
+		  }
+
+		$(function() {
+			$.toptip("提示：当前服务器不可用，请联系管理员", 'warning');
+			var params = {};
+			params.id=Math.random()+'';
+			params.code='0';//成功3
+			params.type='3';//获取系统参数
+			androidJSaction(params);
+		});
+
+		</script>
+	</body>
+
+</html>

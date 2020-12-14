@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>I-msg</artifactId>
+	<packaging>jar</packaging>
+	
+	<parent>
+		<groupId>com.i</groupId>
+		<artifactId>msg</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<name>I-msg</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.0.25.Final</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>RXTXcomm</groupId>
+		    <artifactId>RXTXcomm</artifactId>
+		    <scope>system</scope>
+		    <version>1.0.0</version>
+		    <systemPath>G:/q_workspace/Program Files/eclipse4.5_1.0.1/workspace/20190304/RXTXcomm/user-jar/RXTXcomm.jar</systemPath>
+		</dependency>
+
+	</dependencies>
+
+</project>

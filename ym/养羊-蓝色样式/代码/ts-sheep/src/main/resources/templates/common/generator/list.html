@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8">
+
+	<head th:include="include :: header"></head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content ">
+			<div class="col-sm-12">
+				<div class="ibox">
+					<div class="ibox-body">
+						<div id="exampleToolbar" role="group">
+							<button type="button" class="btn  btn-primary" onclick="batchCode()">
+							<i class="" aria-hidden="true"></i>批量生成
+						</button>
+							<button type="button" class="btn  btn-success" onclick="edit()">
+							<i class="" aria-hidden="true"></i>生成策略
+						</button>
+						</div>
+						<table id="exampleTable" data-mobile-responsive="true">
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--生成代码弹窗-->
+		<div class="ibox-content" id="makeCodeLayer" style="display: none;">
+			<form class="form-horizontal m-t" id="codeForm">
+				<input id="tableName" name="tableName" class="form-control" type="hidden">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">模块名称：</label>
+					<div class="col-sm-10">
+						<input id="model" name="model" class="form-control" type="text" autocomplete="off">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">实体名称：</label>
+					<div class="col-sm-10">
+						<input id="className" name="className" class="form-control" type="text" autocomplete="off">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">查询条件：</label>
+					<div class="col-sm-10 com-flex" id="conditionColumnsBox" style="flex-wrap: wrap;">
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">查询结果：</label>
+					<div class="col-sm-10 com-flex" id="resultColumnsBox" style="flex-wrap: wrap;">
+
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-2 col-sm-offset-3">
+						<button class="btn btn-primary" id="saveMakeCode">提交</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div th:include="include :: footer"></div>
+		<script type="text/javascript" src="js/appjs/common/generator/list.js"></script>
+	</body>
+
+</html>

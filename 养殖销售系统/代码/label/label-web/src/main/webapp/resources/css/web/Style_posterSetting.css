@@ -1,0 +1,229 @@
+.leftPhone{
+    float:left;
+    width:323px;
+    height:650px;
+    background:url('../../images/web/bg_phone6.jpg') no-repeat left center;
+    margin:0 30px 0 30px;
+
+}
+.rightmenuEdit tr td{
+    padding-bottom:10px;
+    padding-top:10px;
+}
+.rightEditor tr td span{
+    margin-left:10px;
+    font-size:12px;
+    color:#A0A0A0;
+}
+.rightmenuEdit .line td{
+    border-bottom:1px solid #dedede;
+    padding-bottom:30px;
+}
+.uploadDiv input[type="file"]{
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -Khtml-opacity:0;
+    opacity:0;
+    position: absolute;
+    top: 0;
+    width: 90px;
+}
+.address input{
+    width:300px;
+}
+.outLink input{
+    width:320px;
+}
+.rightSpace p{
+    height:40px;
+    width:250px;
+    line-height:40px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-20px;
+    margin-left:-125px;
+}
+.promptDiv p{
+    font-size:15px;
+    margin-left:30px;
+}
+.PhoneContent {
+    display: block;
+    height: 477px;
+    margin: 75px 0 90px 15px;
+    overflow: hidden;
+    width: 290px;
+}
+.sitepageContainer iframe{
+    background-color:#efefef;
+    display: block;
+    min-height: 427px;
+    overflow: hidden;
+    width: 305px;
+    border:none;
+}
+
+.viewRight span{
+    line-height:20px;
+}
+.editDiv p{
+    clear:both;
+    margin:25px 0px 0px 30px;
+    width:380px;
+    line-height:20px;
+    float:left;
+}
+.viewLeft input[type="file"]{
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -Khtml-opacity:0;
+    opacity:0;
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100px;
+    height:100%;
+    cursor:pointer;
+}
+
+.templateContainer ul li{
+    cursor: pointer;
+    display: block;
+    float: left;
+    margin-bottom: 25px;
+    margin-right: 15px;
+    position: relative;
+    width: 128px;
+    border:1px solid rgba(255,255,255,0);
+    border-color:rgba(255,255,255,0);
+    border-radius:3px;
+    border: 0 none;
+}
+
+.templateContainer ul li img{
+    border: 2px solid rgba(255,255,255,0);
+    height: 191px;
+    width: 128px;
+    /* border: 0 none;*/
+    vertical-align: middle;
+    padding:1px;
+}
+.templateContainer ul li img:hover{
+    border-color:#1d95df;
+}
+.templateContainer ul {
+    clear:both;
+    height:100%;
+}
+.templateContainer ul li span{
+    margin-left:35px;
+    font-size:15px;
+}
+html,body{
+    width: 100%;;
+    height: 100%;
+}
+/*#share_b{
+    width: 100%;
+}*/
+.am-list>li{
+    border-top: 0;
+    margin-bottom: 0px;
+}
+.listContent .am-list{
+    margin-bottom: 0.6rem;
+}
+a{
+    color: #333 !important;
+}
+.listContent{
+    position: relative;
+}
+.topimg{
+    width: 100%;
+    min-height: 240px;
+}
+.listyle{
+    border-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+.bgred{
+    background: #d85155;
+    width: 100%;
+    height: 150px;
+    padding:0 !important;
+}
+.am-list{
+    margin-bottom: 0 !important;
+}
+.eqcodewarp{
+    position: absolute;
+    bottom: -50px;
+    z-index: 99;
+    left: 50%;
+    margin-left: -50px;
+}
+.eqcode{
+    width: 100px;
+    border: 1px solid #eee;
+}
+.foorwarp{
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    color: #333 !important;
+    font-size: 1.5rem !important;
+}
+.foorwarp .am-list-item-text{
+    color: #fff !important;
+    font-size: 2rem;
+}
+.foorwarp .am-list-item-text .spanstyle{
+    color: #000;
+    margin-left: 5px;
+}
+.imgwarp{
+    width: 100%;
+    min-height: 240px;
+}
+.logo-div{
+    margin: 5px;
+    width: 100px;
+}
+.logo-div img {
+    max-width: 100%;
+}
+.am-list{
+    margin: 0;padding: 0;
+}
+.am-list>li{
+    border-top: 0;
+    margin-bottom: 0px;
+    list-style: none;
+}
+.listContent .am-list{
+    margin-bottom: 0.6rem;
+}
+#mCSB_1{
+    outline: none;
+}
+.rightEditor {
+    float: left;
+    width: 400px;
+    height: auto;
+    font-size: 14px;
+    position: relative;
+    padding-bottom: 10px;
+}
+.bs-example:after{
+    content: "";
+    display: block;
+    clear: both;
+    overflow: hidden;
+}

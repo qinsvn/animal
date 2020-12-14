@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.label.dao.custom.ActivityOrderCustomMapper">
+	<select id="listByWhere" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+			IFNULL(ord.id,'')id,
+			IFNULL(act.fdTitle,'')fdTitle,
+			IFNULL(per.fdUserName,'')fdUserName,
+			IFNULL(per.fdMobile,'')fdMobile,
+			IFNULL(DATE_FORMAT(ord.pay_time,'%Y-%m-%d %H:%i:%s'),'')pay_time,
+			IFNULL(ord.orderNumber,'')orderNumber,
+			IFNULL(tbuser.fdNickName,'')nickname,
+			(case ord.status
+				when '0' then '未付款'
+				when '1' then '已付款'
+				else '未知' end
+			)status,
+			IFNULL(act.fdImgUrl,"")image,
+			IFNULL(act.fdCode,"")code,
+			IFNULL(convert((ord.total/100),decimal(10,2)),'')total,
+		 	IFNULL(per.fdPassCheck,"")fdPassCheck
+		FROM
+			tb_activity_order ord
+		LEFT JOIN tb_activity act ON ord.aid = act.id
+		LEFT JOIN tb_mp_user tbuser ON ord.buyer = tbuser.fdOpenid
+		LEFT JOIN tbpersonalinformation per ON tbuser.id = per.fdUid
+		WHERE
+			1 = 1
+		<if test="companyId !=null and companyId !=''">
+			AND act.fdCompanyId = #{companyId}
+		</if>
+		<if test="number !=null and number !=''">
+			AND ord.number LIKE CONCAT('%',#{number},'%')
+		</if>
+		<if test="stime !=null and stime !=''">
+			AND ord.pay_time &gt;= #{stime}
+		</if>
+		<if test="etime !=null and etime !=''">
+			AND ord.pay_time &lt;=  #{etime}
+		</if>
+		<if test="companyId !=null and companyId !=''">
+			AND act.fdCompanyId = #{companyId}
+		</if>
+		<if test="fdTitle !=null and fdTitle !=''">
+			AND act.fdTitle LIKE CONCAT('%',#{fdTitle},'%')
+		</if>
+		<if test="buyer !=null and buyer !=''">
+			AND per.fdUserName LIKE CONCAT('%',#{buyer},'%')
+		</if>
+		<if test="status !=null and status !=''">
+			AND ord.status = #{status}
+		</if>
+		ORDER BY ord.pay_time DESC
+	</select>
+		<select id="infoById" resultType="java.util.Map" parameterType="java.lang.Integer">
+		SELECT
+			IFNULL(ord.id,'')id,
+			IFNULL(act.fdTitle,'')fdTitle,
+			IFNULL(per.fdUserName,'')fdUserName,
+			IFNULL(per.fdMobile,'')fdMobile,
+			IFNULL(DATE_FORMAT(ord.pay_time,'%Y-%m-%d %H:%i:%s'),'')pay_time,
+			IFNULL(ord.orderNumber,'')orderNumber,
+			IFNULL(tbuser.fdNickName,'')nickname,
+			IFNULL(act.fdImgUrl,"")image,
+			IFNULL(act.fdCode,"")code,
+			(case ord.status
+				when '0' then '未付款'
+				when '1' then '已付款'
+				else '未知' end
+			)status,
+			IFNULL(convert((ord.total/100),decimal(10,2)),'')total,
+			IFNULL(per.fdPassCheck,"")fdPassCheck
+		FROM
+			tb_activity_order ord
+		LEFT JOIN tb_activity act ON ord.aid = act.id
+		LEFT JOIN tb_mp_user tbuser ON ord.buyer = tbuser.fdOpenid
+		LEFT JOIN tbpersonalinformation per ON tbuser.id = per.fdUid
+		WHERE ord.id = #{id}
+	</select>
+</mapper>

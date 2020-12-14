@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.label.dao.custom.BreedDataCustomMapper">
+
+ 	<resultMap id="ChickenBaseResultMap" type="java.util.Map"
+		extends="com.label.dao.auto.ChickenDataMapper.BaseResultMap">
+		<result column="fdName" jdbcType="VARCHAR" property="createUser" />
+		<result column="fdName1" jdbcType="VARCHAR" property="orgName" />
+	</resultMap>
+		<!-- 禽类记录 -->
+ <select id="selectChikens" parameterType="java.util.Map"  resultMap="ChickenBaseResultMap">
+     select
+    	t.*,tt.fdName,ttt.fdName fdName1
+    	 from tb_chicken_data t left join tb_admin_user tt on t.create_user_id = tt.id left join tb_company ttt on ttt.id = t.org_id 
+    where  1=1 and t.status !=1
+	<if test="chikenType != null and chikenType != ''">
+		and  t.chiken_type LIKE CONCAT('%',#{chikenType},'%')
+	</if>
+	<if test="pupplier != null and pupplier != ''">
+		and  t.pupplier LIKE CONCAT('%',#{pupplier},'%')
+	</if>
+	
+	<if test="startCreateTime != null and startCreateTime != ''">
+		<![CDATA[  
+			and t.create_time>= #{startCreateTime}
+		  ]]>
+	</if>
+	<if test="endCreateTime != null and endCreateTime != ''">
+		<![CDATA[  
+			and t.create_time<=#{endCreateTime}
+		]]>
+	</if>
+	<if test="rfidNum != null and rfidNum != ''">
+		and  t.rfid_num LIKE CONCAT('%',#{rfidNum},'%')
+	</if>
+	<if test="dptId != null and dptId != ''">
+		and t.org_id = #{dptId}
+	</if>
+	
+	<if test="status != null and status != ''">
+		and t.status = #{status}
+	</if>
+	<if test="unImmu != null and unImmu != ''">
+	and not EXISTS (select t.id from tb_immune_data i where i.immune_type= #{unImmu} and i.chiken_id = t.id)
+   </if>
+	order by t.create_time desc
+ </select>
+ 
+ 	<resultMap id="aggBaseResultMap" type="java.util.Map"
+		extends="com.label.dao.auto.AggDataMapper.BaseResultMap">
+		<result column="fdName" jdbcType="VARCHAR" property="createUser" />
+		<result column="fdName1" jdbcType="VARCHAR" property="orgName" />
+	</resultMap>
+		<!-- 蛋类记录 -->
+ <select id="selectAggs" parameterType="java.util.Map"  resultMap="aggBaseResultMap">
+     select
+    	t.*,tt.fdName,ttt.fdName fdName1
+    	 from tb_agg_data t left join tb_admin_user tt on t.create_user_id = tt.id left join tb_company ttt on ttt.id = t.org_id 
+    where  1=1  and t.status=0
+	
+	<if test="startCreateTime != null and startCreateTime != ''">
+		<![CDATA[  
+			and t.create_time>= #{startCreateTime}
+		  ]]>
+	</if>
+	<if test="endCreateTime != null and endCreateTime != ''">
+		<![CDATA[  
+			and t.create_time<=#{endCreateTime}
+		]]>
+	</if>
+	<if test="barCode != null and barCode != '' ">
+		and  t.bar_code LIKE CONCAT('%',#{barCode},'%')
+	</if>
+	<if test="dptId != null and dptId != ''">
+		and t.org_id = #{dptId}
+	</if>
+	order by t.create_time desc
+ </select>
+ 
+ 
+ 	<resultMap id="CastrationDataBaseResultMap" type="java.util.Map"
+		extends="com.label.dao.auto.CastrationDataMapper.BaseResultMap">
+		<result column="rfid_num" jdbcType="VARCHAR" property="rfidNum" />
+		<result column="chiken_type" jdbcType="VARCHAR" property="chikenType" />
+		<result column="pupplier" jdbcType="VARCHAR" property="pupplier" />
+		<result column="fdName" jdbcType="VARCHAR" property="createUser" />
+		<result column="fdName1" jdbcType="VARCHAR" property="orgName" />
+	</resultMap>
+	<!-- 阉割记录 -->
+ <select id="selectCastrationDatas" parameterType="java.util.Map"  resultMap="CastrationDataBaseResultMap">
+		select t.*,c.rfid_num ,c.chiken_type,c.pupplier,tt.fdName,ttt.fdName fdName1 
+		 from tb_castration_data t 
+					inner join tb_chicken_data c on c.id=t.chiken_id  
+					left join tb_admin_user tt on t.create_user_id = tt.id 
+					left join tb_company ttt on ttt.id = t.org_id 
+   			 where  1=1  
+	<if test="chikenType != null and chikenType != ''">
+		and  c.chiken_type LIKE CONCAT('%',#{chikenType},'%')
+	</if>
+	<if test="pupplier != null and pupplier != ''">
+		and  c.pupplier LIKE CONCAT('%',#{pupplier},'%')
+	</if>
+	
+	<if test="startCreateTime != null and startCreateTime != ''">
+		<![CDATA[  
+			and t.create_time>= #{startCreateTime}
+		  ]]>
+	</if>
+	<if test="endCreateTime != null and endCreateTime != ''">
+		<![CDATA[  
+			and t.create_time<=#{endCreateTime}
+		]]>
+	</if>
+	<if test="rfidNum != null and rfidNum != ''">
+		and  c.rfid_num LIKE CONCAT('%',#{rfidNum},'%')
+	</if>
+	<if test="dptId != null and dptId != ''">
+		and t.org_id = #{dptId}
+	</if>
+	order by t.create_time desc
+ </select>
+ 
+ 	<resultMap id="ImmuneDataBaseResultMap" type="java.util.Map"
+		extends="com.label.dao.auto.ImmuneDataMapper.BaseResultMap">
+		<result column="rfid_num" jdbcType="VARCHAR" property="rfidNum" />
+		<result column="chiken_type" jdbcType="VARCHAR" property="chikenType" />
+		<result column="pupplier" jdbcType="VARCHAR" property="pupplier" />
+		<result column="fdName" jdbcType="VARCHAR" property="createUser" />
+		<result column="fdName1" jdbcType="VARCHAR" property="orgName" />
+	</resultMap>
+	<!-- 免疫记录 -->
+ <select id="selectImmuneDatas" parameterType="java.util.Map"  resultMap="ImmuneDataBaseResultMap">
+		select t.*,c.rfid_num ,c.chiken_type,c.pupplier,tt.fdName,ttt.fdName fdName1 
+		 from tb_immune_data t 
+					inner join tb_chicken_data c on c.id=t.chiken_id  
+					left join tb_admin_user tt on t.create_user_id = tt.id 
+					left join tb_company ttt on ttt.id = t.org_id 
+   			 where  1=1  
+	<if test="immuneType != null and immuneType != ''">
+		and  t.immune_type LIKE CONCAT('%',#{immuneType},'%')
+	</if>
+	<if test="chikenType != null and chikenType != ''">
+		and  c.chiken_type LIKE CONCAT('%',#{chikenType},'%')
+	</if>
+	<if test="pupplier != null and pupplier != ''">
+		and  c.pupplier LIKE CONCAT('%',#{pupplier},'%')
+	</if>
+	<if test="startCreateTime != null and startCreateTime != ''">
+		<![CDATA[  
+			and t.create_time>= #{startCreateTime}
+		  ]]>
+	</if>
+	<if test="endCreateTime != null and endCreateTime != ''">
+		<![CDATA[  
+			and t.create_time<=#{endCreateTime}
+		]]>
+	</if>
+	<if test="rfidNum != null and rfidNum != ''">
+		and  c.rfid_num LIKE CONCAT('%',#{rfidNum},'%')
+	</if>
+	<if test="dptId != null and dptId != ''">
+		and t.org_id = #{dptId}
+	</if>
+	order by t.create_time desc
+ </select>
+ 
+ 	<resultMap id="substandardDataBaseResultMap" type="java.util.Map"
+		extends="com.label.dao.auto.SubstandardDataMapper.BaseResultMap">
+		<result column="data_code" jdbcType="VARCHAR" property="dataCode" />
+		<result column="data_type_des" jdbcType="VARCHAR" property="dataTypeDes" />
+		<result column="_type" jdbcType="VARCHAR" property="_type" />
+		<result column="fdName" jdbcType="VARCHAR" property="createUser" />
+		<result column="fdName1" jdbcType="VARCHAR" property="orgName" />
+		<result column="fdName11" jdbcType="VARCHAR" property="approvalUser" />
+	</resultMap>
+	<!-- 次品记录 -->
+ <select id="selectSubstandardDatas" parameterType="java.util.Map"  resultMap="substandardDataBaseResultMap">
+		select t.*,c.data_code,c.data_type_des,c._type,tt.fdName,ttt.fdName fdName1 ,tttt.fdName fdName11
+				 from tb_substandard_data t 
+				inner join v_input_data c on c.data_id=t.data_id and c.data_type=t.data_type  
+				left join tb_admin_user tt on t.create_user_id = tt.id 
+				left join tb_company ttt on ttt.id = c.org_id
+				left join tb_admin_user tttt on t.approval_user_id = tttt.id 
+   			 where  1=1  
+	<if test="dataTypeDes != null and dataTypeDes != ''">
+		and  c.data_type_des = #{dataTypeDes} 
+	</if>
+	<if test="dataType != null and dataType != ''">
+		and c.data_type = #{dataType}
+	</if>
+	<if test="startCreateTime != null and startCreateTime != ''">
+		<![CDATA[  
+			and t.create_time>= #{startCreateTime}
+		  ]]>
+	</if>
+	<if test="endCreateTime != null and endCreateTime != ''">
+		<![CDATA[  
+			and t.create_time<=#{endCreateTime}
+		]]>
+	</if>
+	<if test="dataCode != null and dataCode != ''">
+		and  c.data_code = #{dataCode} 
+	</if>
+	<if test="dptId != null and dptId != ''">
+		and t.org_id = #{dptId}
+	</if>
+	<if test="status != null and status != ''">
+		and t.status = #{status}
+	</if>
+	<if test="type != null and type != ''">
+		and c._type = #{type}
+	</if>
+	<if test="substandardType != null and substandardType != ''">
+		and t.remark1 = #{substandardType}
+	</if>
+	
+	order by t.create_time desc
+ </select>
+ 
+<!--  次品汇总 -->
+ <select id="selectSubstandardDataSum" parameterType="java.util.Map"  resultType="java.util.Map">
+		select 	count(*) allsum,
+				sum(case  when t.`status`=1  then 1  else 0   end )  sumApproval,
+				sum(case  when t.`status`=1 and c.data_type =0 then 1  else 0   end )  sumChicken,
+				sum(case  when t.`status`=1 and c.data_type =1 then 1  else 0   end )  sumAgg
+				 from tb_substandard_data t 
+				inner join v_input_data c on c.data_id=t.data_id and c.data_type=t.data_type  
+				left join tb_admin_user tt on t.create_user_id = tt.id 
+				left join tb_company ttt on ttt.id = t.org_id
+				left join tb_admin_user tttt on t.approval_user_id = tttt.id 
+   			 where  1=1  
+	<if test="dataTypeDes != null and dataTypeDes != ''">
+		and  c.data_type_des = #{dataTypeDes} 
+	</if>
+	<if test="dataType != null and dataType != ''">
+		and c.data_type = #{dataType}
+	</if>
+	<if test="startCreateTime != null and startCreateTime != ''">
+		<![CDATA[  
+			and t.create_time>= #{startCreateTime}
+		  ]]>
+	</if>
+	<if test="endCreateTime != null and endCreateTime != ''">
+		<![CDATA[  
+			and t.create_time<=#{endCreateTime}
+		]]>
+	</if>
+	<if test="dataCode != null and dataCode != ''">
+		and  c.data_code = #{dataCode} 
+	</if>
+	<if test="dptId != null and dptId != ''">
+		and t.org_id = #{dptId}
+	</if>
+	<if test="status != null and status != ''">
+		and t.status = #{status}
+	</if>
+	order by t.create_time desc
+ </select>
+ 
+ 	<resultMap id="stockDataBaseResultMap" type="java.util.Map"
+		extends="com.label.dao.auto.StockDataMapper.BaseResultMap">
+		<result column="data_code" jdbcType="VARCHAR" property="dataCode" />
+		<result column="data_type_des" jdbcType="VARCHAR" property="dataTypeDes" />
+		<result column="fdName" jdbcType="VARCHAR" property="createUser" />
+		<result column="fdName1" jdbcType="VARCHAR" property="orgName" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+	<!-- 库存记录 -->
+ <select id="selectStockDatas" parameterType="java.util.Map"  resultMap="stockDataBaseResultMap">
+		select t.*,c.data_code,c.data_type_des,tt.fdName,c.create_time,ttt.fdName  fdName1
+			from tb_stock_data t inner join v_input_data c on c.data_id=t.data_id and c.data_type=t.data_type  
+			left join tb_admin_user tt on c.create_user_id = tt.id 
+			left join tb_company ttt on ttt.id = c.org_id
+   			where  t.`status` =0 
+	<if test="dataTypeDes != null and dataTypeDes != ''">
+		and  c.data_type_des = #{dataTypeDes} 
+	</if>
+	<if test="startCreateTime != null and startCreateTime != ''">
+		<![CDATA[  
+			and t.create_time>= #{startCreateTime}
+		  ]]>
+	</if>
+	<if test="endCreateTime != null and endCreateTime != ''">
+		<![CDATA[  
+			and t.create_time<=#{endCreateTime}
+		]]>
+	</if>
+	<if test="dataCode != null and dataCode != ''">
+		and  c.data_code = #{dataCode} 
+	</if>
+	<if test="dataType != null and dataType != ''">
+		and c.data_type = #{dataType}
+	</if>
+	<if test="dptId != null and dptId != ''">
+		and c.org_id = #{dptId}
+	</if>
+	order by c.create_time desc
+ </select>
+ 
+ 
+  	<resultMap id="orderBaseResultMap" type="java.util.Map"
+		extends="com.label.dao.auto.OrderDataMapper.BaseResultMap">
+		<result column="data_code" jdbcType="VARCHAR" property="dataCode" />
+		<result column="data_type_des" jdbcType="VARCHAR" property="dataTypeDes" />
+		<result column="fdName" jdbcType="VARCHAR" property="createUser" />
+		<result column="fdName1" jdbcType="VARCHAR" property="orgName" />
+	</resultMap>
+ 	<!-- 订单明细 -->
+ <select id="selectOrderDeail" parameterType="java.util.Map"  resultMap="orderBaseResultMap">
+		select t.*,c.data_code,c.data_type_des,tt.fdName  fdName,ttt.fdName  fdName1
+			from tb_order_data t left join v_input_data c on c.data_id=t.data_id and c.data_type=t.data_type  
+			left join tb_admin_user tt on c.create_user_id = tt.id 
+			left join tb_company ttt on ttt.id = c.org_id
+			where  1=1
+				<if test="dataTypeDes != null and dataTypeDes != ''">
+					and  c.data_type_des = #{dataTypeDes} 
+				</if>
+				<if test="dataType != null and dataType != ''">
+					and c.data_type = #{dataType}
+				</if>
+				<if test="startCreateTime != null and startCreateTime != ''">
+					<![CDATA[  
+						and t.create_time>= #{startCreateTime}
+					  ]]>
+				</if>
+				<if test="endCreateTime != null and endCreateTime != ''">
+					<![CDATA[  
+						and t.create_time<=#{endCreateTime}
+					]]>
+				</if>
+				<if test="dataCode != null and dataCode != ''">
+					and  c.data_code = #{dataCode} 
+				</if>
+				<if test="dptId != null and dptId != ''">
+					and t.org_id = #{dptId}
+				</if>
+				order by t.create_time desc
+ </select>
+ 
+ 	<!-- 订单汇总 -->
+ <select id="selectOrderSum" parameterType="java.util.Map"  resultType="java.util.Map">
+		select  t.remark1 monthly, 
+		count(*) allsum,
+		sum(case  t.data_type when 0 then 1 else 0 end) as checken,
+		sum(case  t.data_type when 1 then 1 else 0 end) as agg
+	 from tb_order_data t 
+	 where 1=1
+	 	<if test="year != null and year != ''">
+				and t.remark2 = #{year}
+		</if>
+		<if test="dptId != null and dptId != ''">
+			and t.org_id = #{dptId}
+		</if>
+	 group by t.remark1
+	 order by t.remark1
+ </select>
+ 
+ 
+ 	<!-- 禽类信息 -->
+ <select id="getChickenInfoByRFID"  parameterType="java.lang.String"  resultType="java.util.Map">
+	select t.*,tt.create_time as saleTime,DATEDIFF(tt.create_time,t.create_time) diff_date,ttt.fdName as org_name
+	 from tb_chicken_data t left join tb_order_data tt on t.id = tt.data_id and tt.data_type =0 
+	 left join tb_company ttt on ttt.id = t.org_id
+	 where 1=1 and t.status!=1 and t.rfid_num = #{rfid_num}
+ </select>
+ 
+ 
+</mapper>

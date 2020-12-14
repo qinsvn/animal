@@ -1,0 +1,105 @@
+div[id^=pages] {
+    /* 	width: 500px; */
+    margin-bottom: 6px;;
+    float: right;
+    width: 100%;
+}
+
+div[id^=pages] .count {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    color: #194061;
+    font-size: 12px;
+    padding-right: 4px;
+    width: 200px;
+    clear : both;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    text-align: left;
+}
+
+div[id^=pages] .pages {
+    float: right;
+    height: 30px;
+    padding-left: 10px;
+    width: 100%;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+}
+
+div[id^=pages] .pages a {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #428bca;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+div[id^=pages] .pages a:hover {
+    background: #0e6faa;
+    color: #FFF;
+    border: 1px solid #0e6faa;
+}
+
+div[id^=pages] .pages a.on {
+    background: #1d95df;
+    color: #FFF;
+}
+.goDiv {
+    color: #194061;
+    font-size: 12px;
+    float: left;
+    height: 30px;
+    margin-left: 5px;
+}
+
+.txtPage {
+    padding: 4px 5px;
+    text-align: center;
+    border: 1px solid #1d95df;
+    color: #194061;
+    margin-left: 4px;
+    font-size: 14px;
+    width: 30px;
+    border-radius: 3px;
+    color: #428bca;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    height: 30px;
+    border-radius: 0;
+}
+
+.btnGo {
+    color: #428bca;
+    text-decoration: none;
+    background-color: #fff;
+    font-weight: 500;
+    border-radius: 2px;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid #ddd;
+    height: 30px;
+    margin-top: -4px;
+}
+.btnGo:hover{
+    color: #fff !important;
+    background-color: #0e6faa;
+    border-color: #0e6faa;
+}

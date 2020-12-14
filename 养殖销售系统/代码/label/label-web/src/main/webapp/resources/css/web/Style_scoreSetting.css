@@ -1,0 +1,76 @@
+html,body,.vboxtable {
+    width: 100%;
+    height: 100%;
+}
+/*---score---*/
+.set_score_box{
+    width:286px;
+    height: 300px;
+    margin: 6px 6px 20px 6px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    background: #fff;
+}
+.edit_span{
+    line-height: 40px;
+    color: #777;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.score_options{
+    margin-top: 10px;
+}
+.score_options .options_box{
+    float:left;
+    width: 33%;
+}
+.score_options .options_box .edit_span{
+    font-size: 12px;
+    line-height: 24px;
+    margin: 10px 0;
+}
+.icon_options{
+    display:block;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin: 6px auto;
+}
+.options_1 .icon_options{
+    background:url(../../images/web/smail.png)no-repeat;
+    background-size: cover;
+}
+.options_2 .icon_options{
+    background:url(../../images/web/ok.png)no-repeat;
+    background-size: cover;
+}
+.options_3 .icon_options{
+    background:url(../../images/web/sad.png)no-repeat;
+    background-size: cover;
+}
+.score_textarea{
+    width: 230px;
+    height: 100px;
+    margin-top: 12px;
+    margin-left: 18px;
+}
+.set_score_box input {
+    width: 100%;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    margin: 0 auto;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    box-shadow: 0 1px 0 0 rgba(0,0,0,.1)!important;
+}
+.score_options input{
+    font-size: 12px;
+    line-height: 24px;
+    margin: 6px auto;
+}

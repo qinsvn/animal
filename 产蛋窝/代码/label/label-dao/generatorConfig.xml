@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" 
+	"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- 引入配置文件 -->
+	<!-- <properties resource="init.properties"/> -->
+
+	<!-- 指定数据连接驱动jar地址 -->
+	<classPathEntry
+		location="C:\\Users\\Administrator\\.m2\\repository\\mysql\\mysql-connector-java\\5.1.34\\mysql-connector-java-5.1.34.jar" />
+
+	<!-- 一个数据库一个context -->
+	<context id="context1" targetRuntime="MyBatis3">
+		<!-- 注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="false" /> <!-- 是否取消注释 -->
+			<property name="suppressDate" value="fasle" /> <!-- 是否生成注释代时间戳 -->
+		</commentGenerator>
+
+		<!-- jdbc连接 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://120.77.178.175:4455/animal_dev?characterEncoding=utf8"
+			userId="nb" password="23wesdxc@#" />
+
+		<!-- 类型转换 -->
+		<javaTypeResolver>
+			<!-- 是否使用bigDecimals，false可自动转化以下类型（Long,Integer,Short,etc.） -->
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 生成实体类地址 -->
+		<javaModelGenerator targetPackage="com.label.common.model.base"
+			targetProject="label-common">
+			<!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 是否针对String类型的字段在set的时候进行trim调用 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 生成mapxml文件 -->
+		<sqlMapGenerator targetPackage="com.label.dao.auto"
+			targetProject="label-dao">
+			<!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<!-- 生成mapxml对应的client，也就是接口dao -->
+		<javaClientGenerator targetPackage="com.label.dao.auto"
+			targetProject="label-dao" type="XMLMAPPER">
+			<!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+
+		<!-- <table schema="${jdbc_user}" tableName="tb_admin_user" domainObjectName="AdminUser" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true" 
+			/> </table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tbcart" domainObjectName="MallCart" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true" 
+			/> </table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tbsku" domainObjectName="MallSku" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <generatedKey column="id" sqlStatement="MYSQL" 
+			identity="true" type="post"/> </table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tborder" domainObjectName="MallOrder" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tbpayment" domainObjectName="MallPayment" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tb_hot_classify" domainObjectName="MallHotClassify" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> <table schema="${jdbc_user}" tableName="tb_hot_products" domainObjectName="MallHotProducts" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tbcolumnextra" domainObjectName="MallColumnextra" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tbcolumn" domainObjectName="MallColumn" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tbcontent" domainObjectName="MallContent" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tbserve" domainObjectName="MallServe" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tbproductserve" domainObjectName="MallProductserve" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tb_wallet" domainObjectName="Wallet" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tb_wallet_detail" domainObjectName="WalletDetail" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tborderqrcode" domainObjectName="MallOrderQrcode" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tb_coupons_receive" domainObjectName="CouponsReceive" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+		<!-- <table schema="${jdbc_user}" tableName="tb_course" domainObjectName="Course" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> <table schema="${jdbc_user}" tableName="tb_course_collection" domainObjectName="CourseCollection" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > <property name="useActualColumnNames" value="true"/> 
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/> 
+			</table> -->
+
+		<!-- <table schema="${jdbc_user}" tableName="tb_bs_workshop" domainObjectName="BsWorkshop" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > -->
+		<!-- <property name="useActualColumnNames" value="false"/> -->
+		<!-- <generatedKey column="id" sqlStatement="JDBC" identity="true" type="post"/> -->
+		<!-- </table> -->
+
+		<!-- <table schema="${jdbc_user}" tableName="tb_bs_warn" domainObjectName="BsWarn" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > -->
+		<!-- <property name="useActualColumnNames" value="false"/> -->
+		<!-- <generatedKey column="id" sqlStatement="JDBC" identity="true" type="post"/> -->
+		<!-- </table> -->
+
+
+		<!-- <table schema="${jdbc_user}" tableName="tb_bs_device" domainObjectName="BsDevice" 
+			enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			enableUpdateByExample="true" > -->
+		<!-- <property name="useActualColumnNames" value="false"/> -->
+		<!-- <generatedKey column="id" sqlStatement="JDBC" identity="true" type="post"/> -->
+		<!-- </table> -->
+<!-- 		<table schema="${jdbc_user}" tableName="tb_bs_nest_data" -->
+<!-- 			domainObjectName="BsNestData" enableCountByExample="true" -->
+<!-- 			enableDeleteByExample="true" enableSelectByExample="true" -->
+<!-- 			enableUpdateByExample="true"> -->
+<!-- 			<property name="useActualColumnNames" value="false" /> -->
+<!-- 			<generatedKey column="id" sqlStatement="JDBC" identity="true" -->
+<!-- 				type="post" /> -->
+<!-- 		</table> -->
+<!-- 		<table schema="${jdbc_user}" tableName="tb_bs_nest_data20" -->
+<!-- 			domainObjectName="BsNestData20" enableCountByExample="true" -->
+<!-- 			enableDeleteByExample="true" enableSelectByExample="true" -->
+<!-- 			enableUpdateByExample="true"> -->
+<!-- 			<property name="useActualColumnNames" value="false" /> -->
+<!-- 			<generatedKey column="id" sqlStatement="JDBC" identity="true" -->
+<!-- 				type="post" /> -->
+<!-- 		</table> -->
+	</context>
+</generatorConfiguration>

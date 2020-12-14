@@ -1,0 +1,573 @@
+2020-09-04 15:54:56 -Starting TsApplication on DESKTOP-2B3V2IQ with PID 21108 (started by admin in F:\q_workspace\项目资料\y养殖业-标签\svn\nb\ym\养羊-蓝色样式\代码\ts-sheep)
+2020-09-04 15:54:56 -Running with Spring Boot v2.1.10.RELEASE, Spring v5.1.11.RELEASE
+2020-09-04 15:54:56 -The following profiles are active: dev
+2020-09-04 15:55:00 -Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-04 15:55:00 -Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-09-04 15:55:00 -Finished Spring Data repository scanning in 210ms. Found 0 repository interfaces.
+2020-09-04 15:55:01 -Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c7a71a3f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-09-04 15:55:01 -Bean 'shiroConfig' of type [com.ts.system.config.ShiroConfig$$EnhancerBySpringCGLIB$$a6b06aa8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-09-04 15:55:06 -Bean 'userRealm' of type [com.ts.system.shiro.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-09-04 15:55:06 -Bean 'cacheManager2' of type [net.sf.ehcache.CacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-09-04 15:55:06 -Bean 'ehCacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-09-04 15:55:06 -Cache with name 'com.ts.system.shiro.UserRealm.authorizationCache' does not yet exist.  Creating now.
+2020-09-04 15:55:06 -Added EhCache named [com.ts.system.shiro.UserRealm.authorizationCache]
+2020-09-04 15:55:06 -Bean 'sessionDAO' of type [org.apache.shiro.session.mgt.eis.MemorySessionDAO] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-09-04 15:55:06 -Bean 'sessionManager' of type [org.apache.shiro.web.session.mgt.DefaultWebSessionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-09-04 15:55:06 -Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-09-04 15:55:06 -Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-09-04 15:55:07 -Bean 'tsAuthenticationFilter' of type [com.ts.system.config.TsAuthenticationFilter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-09-04 15:55:08 -Tomcat initialized with port(s): 80 (http)
+2020-09-04 15:55:08 -Initializing ProtocolHandler ["http-nio-80"]
+2020-09-04 15:55:08 -Starting service [Tomcat]
+2020-09-04 15:55:08 -Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-09-04 15:55:09 -Initializing Spring embedded WebApplicationContext
+2020-09-04 15:55:09 -Root WebApplicationContext: initialization completed in 12126 ms
+2020-09-04 15:55:09 -Filter xssFilter was not registered (disabled)
+2020-09-04 15:55:10 -{dataSource-1} inited
+2020-09-04 15:55:13 -ProcessEngine default created
+2020-09-04 15:55:14 -ApplicationContext registed-->org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6865c751, started on Fri Sep 04 15:54:56 CST 2020
+2020-09-04 15:55:15 -Using default implementation for ThreadExecutor
+2020-09-04 15:55:15 -Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2020-09-04 15:55:15 -Quartz Scheduler v.2.2.1 created.
+2020-09-04 15:55:15 -RAMJobStore initialized.
+2020-09-04 15:55:15 -Scheduler meta-data: Quartz Scheduler (v2.2.1) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2020-09-04 15:55:15 -Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+2020-09-04 15:55:15 -Quartz scheduler version: 2.2.1
+2020-09-04 15:55:15 -JobFactory set to: com.ts.common.quartz.factory.JobFactory@73dd3a46
+2020-09-04 15:55:15 -Initializing ExecutorService 'clientInboundChannelExecutor'
+2020-09-04 15:55:15 -Initializing ExecutorService 'clientOutboundChannelExecutor'
+2020-09-04 15:55:16 -[THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-09-04 15:55:17 -Initializing ExecutorService 'messageBrokerTaskScheduler'
+2020-09-04 15:55:17 -Initializing ExecutorService 'brokerChannelExecutor'
+2020-09-04 15:55:18 -Context refreshed
+2020-09-04 15:55:18 -Found 1 custom documentation plugin(s)
+2020-09-04 15:55:18 -Scanning for api listing references
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_1
+2020-09-04 15:55:19 -Generating unique operation named: saveUsingPOST_1
+2020-09-04 15:55:19 -Generating unique operation named: addUsingGET_1
+2020-09-04 15:55:19 -Generating unique operation named: editUsingGET_1
+2020-09-04 15:55:19 -Generating unique operation named: listUsingGET_1
+2020-09-04 15:55:19 -Generating unique operation named: listUsingHEAD_1
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPOST_1
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPUT_1
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPATCH_1
+2020-09-04 15:55:19 -Generating unique operation named: listUsingDELETE_1
+2020-09-04 15:55:19 -Generating unique operation named: listUsingOPTIONS_1
+2020-09-04 15:55:19 -Generating unique operation named: listUsingTRACE_1
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_2
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_3
+2020-09-04 15:55:19 -Generating unique operation named: saveUsingPOST_2
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingGET_1
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingHEAD_1
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPOST_1
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPUT_1
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPATCH_1
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingDELETE_1
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingOPTIONS_1
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingTRACE_1
+2020-09-04 15:55:19 -Generating unique operation named: addUsingGET_2
+2020-09-04 15:55:19 -Generating unique operation named: editUsingGET_2
+2020-09-04 15:55:19 -Generating unique operation named: listUsingGET_2
+2020-09-04 15:55:19 -Generating unique operation named: listUsingHEAD_2
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPOST_2
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPUT_2
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPATCH_2
+2020-09-04 15:55:19 -Generating unique operation named: listUsingDELETE_2
+2020-09-04 15:55:19 -Generating unique operation named: listUsingOPTIONS_2
+2020-09-04 15:55:19 -Generating unique operation named: listUsingTRACE_2
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_4
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_5
+2020-09-04 15:55:19 -Generating unique operation named: saveUsingPOST_3
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingGET_2
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingHEAD_2
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPOST_2
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPUT_2
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPATCH_2
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingDELETE_2
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingOPTIONS_2
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingTRACE_2
+2020-09-04 15:55:19 -Generating unique operation named: addUsingGET_3
+2020-09-04 15:55:19 -Generating unique operation named: editUsingGET_3
+2020-09-04 15:55:19 -Generating unique operation named: listUsingGET_3
+2020-09-04 15:55:19 -Generating unique operation named: listUsingHEAD_3
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPOST_3
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPUT_3
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPATCH_3
+2020-09-04 15:55:19 -Generating unique operation named: listUsingDELETE_3
+2020-09-04 15:55:19 -Generating unique operation named: listUsingOPTIONS_3
+2020-09-04 15:55:19 -Generating unique operation named: listUsingTRACE_3
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_6
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_7
+2020-09-04 15:55:19 -Generating unique operation named: saveUsingPOST_4
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingGET_3
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingHEAD_3
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPOST_3
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPUT_3
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPATCH_3
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingDELETE_3
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingOPTIONS_3
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingTRACE_3
+2020-09-04 15:55:19 -Generating unique operation named: addUsingGET_4
+2020-09-04 15:55:19 -Generating unique operation named: editUsingGET_4
+2020-09-04 15:55:19 -Generating unique operation named: listUsingGET_4
+2020-09-04 15:55:19 -Generating unique operation named: listUsingGET_5
+2020-09-04 15:55:19 -Generating unique operation named: listUsingHEAD_4
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPOST_4
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPUT_4
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPATCH_4
+2020-09-04 15:55:19 -Generating unique operation named: listUsingDELETE_4
+2020-09-04 15:55:19 -Generating unique operation named: listUsingOPTIONS_4
+2020-09-04 15:55:19 -Generating unique operation named: listUsingTRACE_4
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_8
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_9
+2020-09-04 15:55:19 -Generating unique operation named: saveUsingPOST_5
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingGET_4
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingHEAD_4
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPOST_4
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPUT_4
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPATCH_4
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingDELETE_4
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingOPTIONS_4
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingTRACE_4
+2020-09-04 15:55:19 -Generating unique operation named: addUsingGET_5
+2020-09-04 15:55:19 -Generating unique operation named: editUsingGET_5
+2020-09-04 15:55:19 -Generating unique operation named: listUsingGET_6
+2020-09-04 15:55:19 -Generating unique operation named: listUsingHEAD_5
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPOST_5
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPUT_5
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPATCH_5
+2020-09-04 15:55:19 -Generating unique operation named: listUsingDELETE_5
+2020-09-04 15:55:19 -Generating unique operation named: listUsingOPTIONS_5
+2020-09-04 15:55:19 -Generating unique operation named: listUsingTRACE_5
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_10
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_11
+2020-09-04 15:55:19 -Generating unique operation named: saveUsingPOST_6
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingGET_5
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingHEAD_5
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPOST_5
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPUT_5
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPATCH_5
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingDELETE_5
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingOPTIONS_5
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingTRACE_5
+2020-09-04 15:55:19 -Generating unique operation named: addUsingGET_6
+2020-09-04 15:55:19 -Generating unique operation named: editUsingGET_6
+2020-09-04 15:55:19 -Generating unique operation named: listUsingGET_7
+2020-09-04 15:55:19 -Generating unique operation named: listUsingHEAD_6
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPOST_6
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPUT_6
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPATCH_6
+2020-09-04 15:55:19 -Generating unique operation named: listUsingDELETE_6
+2020-09-04 15:55:19 -Generating unique operation named: listUsingOPTIONS_6
+2020-09-04 15:55:19 -Generating unique operation named: listUsingTRACE_6
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_12
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_13
+2020-09-04 15:55:19 -Generating unique operation named: saveUsingPOST_7
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingGET_6
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingHEAD_6
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPOST_6
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPUT_6
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPATCH_6
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingDELETE_6
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingOPTIONS_6
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingTRACE_6
+2020-09-04 15:55:19 -Generating unique operation named: editUsingGET_7
+2020-09-04 15:55:19 -Generating unique operation named: getFileUsingGET_1
+2020-09-04 15:55:19 -Generating unique operation named: getFileUsingHEAD_1
+2020-09-04 15:55:19 -Generating unique operation named: getFileUsingPOST_1
+2020-09-04 15:55:19 -Generating unique operation named: getFileUsingPUT_1
+2020-09-04 15:55:19 -Generating unique operation named: getFileUsingPATCH_1
+2020-09-04 15:55:19 -Generating unique operation named: getFileUsingDELETE_1
+2020-09-04 15:55:19 -Generating unique operation named: getFileUsingOPTIONS_1
+2020-09-04 15:55:19 -Generating unique operation named: getFileUsingTRACE_1
+2020-09-04 15:55:19 -Generating unique operation named: listUsingGET_8
+2020-09-04 15:55:19 -Generating unique operation named: listUsingHEAD_7
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPOST_7
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPUT_7
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPATCH_7
+2020-09-04 15:55:19 -Generating unique operation named: listUsingDELETE_7
+2020-09-04 15:55:19 -Generating unique operation named: listUsingOPTIONS_7
+2020-09-04 15:55:19 -Generating unique operation named: listUsingTRACE_7
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPOST_7
+2020-09-04 15:55:19 -Generating unique operation named: addUsingGET_7
+2020-09-04 15:55:19 -Generating unique operation named: editUsingGET_8
+2020-09-04 15:55:19 -Generating unique operation named: listUsingGET_9
+2020-09-04 15:55:19 -Generating unique operation named: listUsingHEAD_8
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPOST_8
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPUT_8
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPATCH_8
+2020-09-04 15:55:19 -Generating unique operation named: listUsingDELETE_8
+2020-09-04 15:55:19 -Generating unique operation named: listUsingOPTIONS_8
+2020-09-04 15:55:19 -Generating unique operation named: listUsingTRACE_8
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_14
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_15
+2020-09-04 15:55:19 -Generating unique operation named: saveUsingPOST_8
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingGET_7
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingHEAD_7
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPOST_8
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPUT_7
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingPATCH_7
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingDELETE_7
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingOPTIONS_7
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingTRACE_7
+2020-09-04 15:55:19 -Generating unique operation named: addUsingGET_8
+2020-09-04 15:55:19 -Generating unique operation named: editUsingGET_9
+2020-09-04 15:55:19 -Generating unique operation named: listUsingGET_10
+2020-09-04 15:55:19 -Generating unique operation named: listUsingHEAD_9
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPOST_9
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPUT_9
+2020-09-04 15:55:19 -Generating unique operation named: listUsingPATCH_9
+2020-09-04 15:55:19 -Generating unique operation named: listUsingDELETE_9
+2020-09-04 15:55:19 -Generating unique operation named: listUsingOPTIONS_9
+2020-09-04 15:55:19 -Generating unique operation named: listUsingTRACE_9
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_16
+2020-09-04 15:55:19 -Generating unique operation named: removeUsingPOST_17
+2020-09-04 15:55:19 -Generating unique operation named: saveUsingPOST_9
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingGET_8
+2020-09-04 15:55:19 -Generating unique operation named: updateUsingHEAD_8
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPOST_9
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPUT_8
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPATCH_8
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingDELETE_8
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingOPTIONS_8
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingTRACE_8
+2020-09-04 15:55:20 -Generating unique operation named: addUsingGET_9
+2020-09-04 15:55:20 -Generating unique operation named: editUsingGET_10
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_11
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_10
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_10
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_10
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_10
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_10
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_10
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_10
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_18
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_19
+2020-09-04 15:55:20 -Generating unique operation named: saveUsingPOST_10
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingGET_9
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingHEAD_9
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPOST_10
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPUT_9
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPATCH_9
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingDELETE_9
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingOPTIONS_9
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingTRACE_9
+2020-09-04 15:55:20 -Generating unique operation named: addUsingGET_10
+2020-09-04 15:55:20 -Generating unique operation named: editUsingGET_11
+2020-09-04 15:55:20 -Generating unique operation named: infoUsingGET_1
+2020-09-04 15:55:20 -Generating unique operation named: infoUsingHEAD_1
+2020-09-04 15:55:20 -Generating unique operation named: infoUsingPOST_1
+2020-09-04 15:55:20 -Generating unique operation named: infoUsingPUT_1
+2020-09-04 15:55:20 -Generating unique operation named: infoUsingPATCH_1
+2020-09-04 15:55:20 -Generating unique operation named: infoUsingDELETE_1
+2020-09-04 15:55:20 -Generating unique operation named: infoUsingOPTIONS_1
+2020-09-04 15:55:20 -Generating unique operation named: infoUsingTRACE_1
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_12
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_11
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_11
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_11
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_11
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_11
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_11
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_11
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_20
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_21
+2020-09-04 15:55:20 -Generating unique operation named: saveUsingPOST_11
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPOST_11
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_13
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_12
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_12
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_12
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_12
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_12
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_12
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_12
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_22
+2020-09-04 15:55:20 -Generating unique operation named: welcomeUsingGET_1
+2020-09-04 15:55:20 -Generating unique operation named: addUsingGET_11
+2020-09-04 15:55:20 -Generating unique operation named: dictListUsingGET_1
+2020-09-04 15:55:20 -Generating unique operation named: editUsingGET_12
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_14
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_13
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_13
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_13
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_13
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_13
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_13
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_13
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_23
+2020-09-04 15:55:20 -Generating unique operation named: saveUsingPOST_12
+2020-09-04 15:55:20 -Generating unique operation named: treeUsingGET_1
+2020-09-04 15:55:20 -Generating unique operation named: treeUsingGET_2
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPOST_12
+2020-09-04 15:55:20 -Generating unique operation named: batchRemoveUsingPOST_1
+2020-09-04 15:55:20 -Generating unique operation named: editUsingGET_13
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_15
+2020-09-04 15:55:20 -Generating unique operation named: addUsingGET_12
+2020-09-04 15:55:20 -Generating unique operation named: editUsingGET_14
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_16
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_14
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_14
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_14
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_14
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_14
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_14
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_14
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_24
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_25
+2020-09-04 15:55:20 -Generating unique operation named: saveUsingPOST_13
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingGET_10
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingHEAD_10
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPOST_13
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPUT_10
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPATCH_10
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingDELETE_10
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingOPTIONS_10
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingTRACE_10
+2020-09-04 15:55:20 -Generating unique operation named: toUsingGET_1
+2020-09-04 15:55:20 -Generating unique operation named: toUsingGET_2
+2020-09-04 15:55:20 -Generating unique operation named: toUsingGET_3
+2020-09-04 15:55:20 -Generating unique operation named: addUsingGET_13
+2020-09-04 15:55:20 -Generating unique operation named: batchRemoveUsingPOST_2
+2020-09-04 15:55:20 -Generating unique operation named: deployUsingPOST_1
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_17
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_26
+2020-09-04 15:55:20 -Generating unique operation named: addUsingGET_14
+2020-09-04 15:55:20 -Generating unique operation named: editUsingGET_15
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_18
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_15
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_15
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_15
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_15
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_15
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_15
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_15
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_27
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_28
+2020-09-04 15:55:20 -Generating unique operation named: saveUsingPOST_14
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingGET_11
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingHEAD_11
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPOST_14
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPUT_11
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPATCH_11
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingDELETE_11
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingOPTIONS_11
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingTRACE_11
+2020-09-04 15:55:20 -Generating unique operation named: addUsingGET_15
+2020-09-04 15:55:20 -Generating unique operation named: batchRemoveUsingPOST_3
+2020-09-04 15:55:20 -Generating unique operation named: editUsingGET_16
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_19
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_16
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_16
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_16
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_16
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_16
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_16
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_16
+2020-09-04 15:55:20 -Generating unique operation named: saveUsingPOST_15
+2020-09-04 15:55:20 -Generating unique operation named: saveUsingPOST_16
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPOST_15
+2020-09-04 15:55:20 -Generating unique operation named: addUsingGET_16
+2020-09-04 15:55:20 -Generating unique operation named: editUsingGET_17
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_20
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_17
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_17
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_17
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_17
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_17
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_17
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_17
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_29
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_30
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingGET_12
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingHEAD_12
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPOST_16
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPUT_12
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPATCH_12
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingDELETE_12
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingOPTIONS_12
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingTRACE_12
+2020-09-04 15:55:20 -Generating unique operation named: addUsingGET_17
+2020-09-04 15:55:20 -Generating unique operation named: editUsingGET_18
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_21
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_18
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_18
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_18
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_18
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_18
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_18
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_18
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_31
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_32
+2020-09-04 15:55:20 -Generating unique operation named: saveUsingPOST_17
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingGET_13
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingHEAD_13
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPOST_17
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPUT_13
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPATCH_13
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingDELETE_13
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingOPTIONS_13
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingTRACE_13
+2020-09-04 15:55:20 -Generating unique operation named: addUsingGET_18
+2020-09-04 15:55:20 -Generating unique operation named: editUsingGET_19
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_22
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_19
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_19
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_19
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_19
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_19
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_19
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_19
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_33
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_34
+2020-09-04 15:55:20 -Generating unique operation named: saveUsingPOST_18
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingGET_14
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingHEAD_14
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPOST_18
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPUT_14
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPATCH_14
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingDELETE_14
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingOPTIONS_14
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingTRACE_14
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_23
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_20
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_20
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_20
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_20
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_20
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_20
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_20
+2020-09-04 15:55:20 -Generating unique operation named: addUsingGET_19
+2020-09-04 15:55:20 -Generating unique operation named: dictListUsingGET_2
+2020-09-04 15:55:20 -Generating unique operation named: editUsingGET_20
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_24
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_21
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_21
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_21
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_21
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_21
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_21
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_21
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_35
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_36
+2020-09-04 15:55:20 -Generating unique operation named: saveUsingPOST_19
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingGET_15
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingHEAD_15
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPOST_19
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPUT_15
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPATCH_15
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingDELETE_15
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingOPTIONS_15
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingTRACE_15
+2020-09-04 15:55:20 -Generating unique operation named: addUsingGET_20
+2020-09-04 15:55:20 -Generating unique operation named: editUsingGET_21
+2020-09-04 15:55:20 -Generating unique operation named: listUsingGET_25
+2020-09-04 15:55:20 -Generating unique operation named: listUsingHEAD_22
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPOST_22
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPUT_22
+2020-09-04 15:55:20 -Generating unique operation named: listUsingPATCH_22
+2020-09-04 15:55:20 -Generating unique operation named: listUsingDELETE_22
+2020-09-04 15:55:20 -Generating unique operation named: listUsingOPTIONS_22
+2020-09-04 15:55:20 -Generating unique operation named: listUsingTRACE_22
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_37
+2020-09-04 15:55:20 -Generating unique operation named: removeUsingPOST_38
+2020-09-04 15:55:20 -Generating unique operation named: saveUsingPOST_20
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingGET_16
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingHEAD_16
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPOST_20
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPUT_16
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingPATCH_16
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingDELETE_16
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingOPTIONS_16
+2020-09-04 15:55:20 -Generating unique operation named: updateUsingTRACE_16
+2020-09-04 15:55:21 -Generating unique operation named: addUsingGET_21
+2020-09-04 15:55:21 -Generating unique operation named: dictListUsingGET_3
+2020-09-04 15:55:21 -Generating unique operation named: editUsingGET_22
+2020-09-04 15:55:21 -Generating unique operation named: listUsingGET_26
+2020-09-04 15:55:21 -Generating unique operation named: listUsingHEAD_23
+2020-09-04 15:55:21 -Generating unique operation named: listUsingPOST_23
+2020-09-04 15:55:21 -Generating unique operation named: listUsingPUT_23
+2020-09-04 15:55:21 -Generating unique operation named: listUsingPATCH_23
+2020-09-04 15:55:21 -Generating unique operation named: listUsingDELETE_23
+2020-09-04 15:55:21 -Generating unique operation named: listUsingOPTIONS_23
+2020-09-04 15:55:21 -Generating unique operation named: listUsingTRACE_23
+2020-09-04 15:55:21 -Generating unique operation named: removeUsingPOST_39
+2020-09-04 15:55:21 -Generating unique operation named: removeUsingPOST_40
+2020-09-04 15:55:21 -Generating unique operation named: saveUsingPOST_21
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingGET_17
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingHEAD_17
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingPOST_21
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingPUT_17
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingPATCH_17
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingDELETE_17
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingOPTIONS_17
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingTRACE_17
+2020-09-04 15:55:21 -Generating unique operation named: listUsingGET_27
+2020-09-04 15:55:21 -Generating unique operation named: addUsingGET_22
+2020-09-04 15:55:21 -Generating unique operation named: editUsingGET_23
+2020-09-04 15:55:21 -Generating unique operation named: listUsingGET_28
+2020-09-04 15:55:21 -Generating unique operation named: listUsingHEAD_24
+2020-09-04 15:55:21 -Generating unique operation named: listUsingPOST_24
+2020-09-04 15:55:21 -Generating unique operation named: listUsingPUT_24
+2020-09-04 15:55:21 -Generating unique operation named: listUsingPATCH_24
+2020-09-04 15:55:21 -Generating unique operation named: listUsingDELETE_24
+2020-09-04 15:55:21 -Generating unique operation named: listUsingOPTIONS_24
+2020-09-04 15:55:21 -Generating unique operation named: listUsingTRACE_24
+2020-09-04 15:55:21 -Generating unique operation named: removeUsingPOST_41
+2020-09-04 15:55:21 -Generating unique operation named: removeUsingPOST_42
+2020-09-04 15:55:21 -Generating unique operation named: saveUsingPOST_22
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingGET_18
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingHEAD_18
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingPOST_22
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingPUT_18
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingPATCH_18
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingDELETE_18
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingOPTIONS_18
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingTRACE_18
+2020-09-04 15:55:21 -Generating unique operation named: addUsingGET_23
+2020-09-04 15:55:21 -Generating unique operation named: batchRemoveUsingPOST_4
+2020-09-04 15:55:21 -Generating unique operation named: editUsingGET_24
+2020-09-04 15:55:21 -Generating unique operation named: listUsingGET_29
+2020-09-04 15:55:21 -Generating unique operation named: listUsingHEAD_25
+2020-09-04 15:55:21 -Generating unique operation named: listUsingPOST_25
+2020-09-04 15:55:21 -Generating unique operation named: listUsingPUT_25
+2020-09-04 15:55:21 -Generating unique operation named: listUsingPATCH_25
+2020-09-04 15:55:21 -Generating unique operation named: listUsingDELETE_25
+2020-09-04 15:55:21 -Generating unique operation named: listUsingOPTIONS_25
+2020-09-04 15:55:21 -Generating unique operation named: listUsingTRACE_25
+2020-09-04 15:55:21 -Generating unique operation named: removeUsingPOST_43
+2020-09-04 15:55:21 -Generating unique operation named: saveUsingPOST_23
+2020-09-04 15:55:21 -Generating unique operation named: treeUsingGET_3
+2020-09-04 15:55:21 -Generating unique operation named: treeViewUsingGET_1
+2020-09-04 15:55:21 -Generating unique operation named: updateUsingPOST_23
+2020-09-04 15:55:21 -Starting Quartz Scheduler now
+2020-09-04 15:55:21 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+2020-09-04 15:55:21 -Starting...
+2020-09-04 15:55:21 -BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2020-09-04 15:55:21 -Started.
+2020-09-04 15:55:21 -Starting ProtocolHandler ["http-nio-80"]
+2020-09-04 15:55:21 -Tomcat started on port(s): 80 (http) with context path '/sheep'
+2020-09-04 15:55:21 -Started TsApplication in 26.97 seconds (JVM running for 35.804)
+2020-09-04 15:55:21 -==>  Preparing: select `id`,`cron_expression`,`method_name`,`is_concurrent`,`description`,`update_by`,`bean_class`,`create_date`,`job_status`,`job_group`,`update_date`,`create_by`,`spring_bean`,`job_name` from sys_task order by id desc 
+2020-09-04 15:55:21 -==> Parameters: 
+2020-09-04 15:55:21 -<==      Total: 1
+2020-09-04 15:55:21 ->>>>> com.ts.system.service.impl.SystemServiceImpl.init()
+2020-09-04 15:55:21 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user order by user_id desc 
+2020-09-04 15:55:21 -==> Parameters: 
+2020-09-04 15:55:21 -<==      Total: 2
+2020-09-04 15:55:22 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag`,`level`,`select_order`,`parents`,self_and_children_ids(sys_dept.dept_id) as `childrens` from sys_dept order by dept_id desc 
+2020-09-04 15:55:22 -==> Parameters: 
+2020-09-04 15:55:22 -<==      Total: 10
+2020-09-04 15:55:22 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict order by id desc 
+2020-09-04 15:55:22 -==> Parameters: 
+2020-09-04 15:55:22 -<==      Total: 27
+2020-09-04 15:55:22 ->>>>> com.ts.uhf.UhfReader.init()
+2020-09-04 15:55:22 -ts-base启动成功    
+2020-09-04 15:56:17 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]

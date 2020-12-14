@@ -1,0 +1,73 @@
+package ${package}.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
+
+import ${package}.dao.${className}Dao;
+import ${package}.domain.${className}DO;
+import ${package}.service.${className}Service;
+import com.ts.common.utils.Result;
+
+
+@Service
+public class ${className}ServiceImpl implements ${className}Service {
+	@Autowired
+	private ${className}Dao ${classname}Dao;
+	
+	@Override
+	public ${className}DO get(${pk.attrType} ${pk.attrname}){
+		return ${classname}Dao.get(${pk.attrname});
+	}
+	
+	@Override
+	public List<${className}DO> list(Map<String, Object> map){
+		return ${classname}Dao.list(map);
+	}
+	
+	@Override
+	public int count(Map<String, Object> map){
+		return ${classname}Dao.count(map);
+	}
+	
+	@Override
+	public int save(Result result,${className}DO ${classname}){
+		 int ret = ${classname}Dao.save(${classname});
+		if(ret==0){
+	    	result.set(Result.FAIL, "保存失败", null);
+	    }
+		return ret;
+		
+		
+	}
+	
+	@Override
+	public int update(Result result,${className}DO ${classname}){
+	    int ret = ${classname}Dao.update(${classname});
+		if(ret==0){
+	    	result.set(Result.FAIL, "更新失败", null);
+	    }
+		return ret;
+	}
+	
+	@Override
+	public int remove(Result result,${pk.attrType} ${pk.attrname}){
+	    int ret = ${classname}Dao.remove(${pk.attrname});
+	    if(ret==0){
+	    	result.set(Result.FAIL, "删除失败", null);
+	    }
+		return ret;
+	}
+	
+	@Override
+	public int batchRemove(Result result,${pk.attrType}[] ${pk.attrname}s){
+		int ret = ${classname}Dao.batchRemove(${pk.attrname}s);
+		 if(ret!=${pk.attrname}s.length){
+	    	result.set(Result.FAIL, "部分删除失败", null);
+	    }
+		return ret;
+	}
+	
+}

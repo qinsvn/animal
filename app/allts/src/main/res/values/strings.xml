@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">信息采集</string>
+    <string name="accessibility_description">无障碍监听</string>
+    <string name="accessibility_service_label">无障碍监听服务</string>
+</resources>

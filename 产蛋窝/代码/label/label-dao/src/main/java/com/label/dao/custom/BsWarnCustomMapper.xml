@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.label.dao.custom.BsWarnCustomMapper">
+
+	<resultMap id="BaseResultMap" type="java.util.Map"
+		extends="com.label.dao.auto.BsWarnMapper.BaseResultMap">
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="header" jdbcType="VARCHAR" property="header" />
+		<result column="dpt_id" jdbcType="VARCHAR" property="dptId" />
+		<result column="dpt_name" jdbcType="VARCHAR" property="dptName" />
+	</resultMap>
+
+	<select id="select" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT
+		wn.*, ws.`name`,
+		ws.header,
+	    c.id dpt_id,
+	    c.fdName dpt_name
+		FROM
+		`tb_bs_warn` wn
+		LEFT JOIN tb_bs_workshop ws ON wn.ws_id = ws.id left join tb_company c on ws.dpt_id = c.id
+		where 1=1
+		<if test="startExceed != null and startExceed != ''">
+		<![CDATA[  
+			and wn.exceed_time>= #{startExceed}
+		  ]]>
+		</if>
+		<if test="endExceed != null and endExceed != ''">
+		<![CDATA[  
+			and wn.exceed_time<=#{endExceed}
+		]]>
+		</if>
+		<if test="rfidNum != null and rfidNum != ''">
+			and wn.rfid_num  LIKE CONCAT('%',#{rfidNum},'%')
+		</if>
+		<if test="name != null and name != ''">
+			and ws.`name` LIKE CONCAT('%',#{name},'%')
+		</if>
+		<if test="dptId != null and dptId != ''">
+			and c.`id` =#{dptId}
+		</if>
+		order by wn.warn_time desc
+
+	</select>
+
+</mapper>

@@ -1,0 +1,29 @@
+body{
+}
+ul,ol{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+
+.wrappers{
+	padding: 15px 15px 0;
+}
+.input-group{
+	display: inline-block;
+}
+.control-label{
+	line-height: 35px;
+}
+
+@media (min-width: 768px) and (max-width: 1365px){
+	.xScroll{
+		width: 1688px;
+	}
+	.msScroll{
+		width: 1400px;
+	}
+	.xScrollBox{
+		overflow-x: scroll;
+	}
+}

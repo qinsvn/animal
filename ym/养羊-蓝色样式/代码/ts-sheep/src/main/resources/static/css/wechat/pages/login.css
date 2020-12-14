@@ -1,0 +1,87 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	background-image: linear-gradient(#00CAF9, #3D80D4);
+	background-image: -ms-linear-gradient(#00CAF9, #3D80D4);
+	background-image: -webkit-linear-gradient(#00CAF9, #3D80D4);
+	background-image: -moz-linear-gradient(#00CAF9, #3D80D4);
+}
+
+.container {
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.logoBox {
+	text-align: center;
+}
+
+.weui-cells:after,
+.weui-cells:before {
+	height: 0;
+	border: none;
+}
+
+.logoBox img {
+	width: 100px;
+	background-color: rosybrown;
+}
+
+.logoBox p {
+	font-size: 20px;
+	color: #FFFFFF;
+}
+
+.formBox {
+	width: 80%;
+	padding: 20px 10px;
+	background-color: rgba(255, 255, 255, .2);
+	border-radius: 5px;
+	color: #FFFFFF;
+}
+
+.formBox .vcode-cell {
+	padding-right: 0;
+}
+
+.formBox .weui-label {
+	width: 60px;
+}
+
+.formBox .weui-cell__ft {
+	margin-left: 5px;
+}
+
+.formBox .weui-btn {
+	line-height: 1;
+	font-size: 13px;
+	color: #FFFFFF;
+	background-color: rgba(255, 255, 255, .3);
+	padding: 8px 15px;
+}
+
+.formBox .weui-btn:after {
+	border: none;
+}
+
+.formBox .vcode-img {
+	width: 95px;
+	height: 25px;
+}
+
+.submitBtn {
+	width: 80%;
+	padding: 10px 0;
+	line-height: 1;
+	margin: 15px 0;
+	color: #FFFFFF;
+	background-color: rgba(255, 255, 255, .3);
+}
+
+.weui-cell_link {
+	color: #FFFFFF;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/reset.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/border.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/weui.min.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/jquery-weui.min.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/common.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/pages/login.css}" />
+	</head>
+
+	<body>
+
+		<section class="container wx-flex" id="section">
+			<div class="logoBox">
+				<p>信息采集客户端</p>
+			</div>
+			<div class="formBox weui-cells weui-cells_form">
+				<div class="weui-cell">
+					<div class="weui-cell__hd"><label class="weui-label">账号</label></div>
+					<div class="weui-cell__bd">
+						<input type="text"  id="username" class="weui-input">
+					</div>
+				</div>
+				<div class="weui-cell">
+					<div class="weui-cell__hd"><label class="weui-label">密码</label></div>
+					<div class="weui-cell__bd">
+						<input type="password" id="password" class="weui-input">
+					</div>
+				</div>
+				<div class="weui-cell vcode-cell">
+					<div class="weui-cell__hd"><label class="weui-label">验证码</label></div>
+					<div class="weui-cell__bd">
+						<input type="text" id="verify" class="weui-input" pattern="[0-9]*" maxlength="6">
+					</div>
+					<div class="weui-cell__ft">
+						<!--<button class="weui-btn weui-btn_default">获取验证码</button>-->
+						<img class="vcode-img" id="vcode_img" th:src="@{/getVerify}" onclick="getVerify()"/>
+					</div>
+				</div>
+			</div>
+			<a class="weui-btn weui-btn_default submitBtn" href="javascript:" onclick="login()">登录</a>
+<!-- 			<a class="weui-cell_link" href="javascript:">立即注册</a> -->
+
+		</section>
+		<script th:inline="javascript"> var ctx = [[${#request.getContextPath()}]];</script>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/jquery.min.js}"></script>
+		<script type="text/javascript">
+			$("input").blur(function() {
+				setTimeout(function() {
+					var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+					window.scrollTo(0, Math.max(scrollHeight - 1, 0));
+				}, 100);
+			});
+			
+		    function login() {
+		        $.ajax({
+		            type: "POST",
+		            url: ctx + "/login",
+		            data: {username:$('#username').val(),password:$('#password').val(),verify:$('#verify').val()},
+		            success: function (r) {
+		                if (r.code == 0) {
+// 		                    var index = layer.load(1, {
+// 		                        shade: [0.1, '#fff'] //0.1透明度的白色背景
+// 		                    });
+		                    parent.location.href = ctx +'/index?from=mobile';
+		                } else {
+		                    $.toptip(r.msg, 'warning');
+		                }
+		            },
+		        });
+		    }
+		    
+		    //获取验证码
+		    function getVerify() {
+		    	$('#vcode_img').attr('src',ctx +"/getVerify?" + Math.random());
+		        console.log($('#vcode_img').attr('src'));
+		    }
+		</script>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/jquery-weui.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/template-web.js}"></script>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/pages/login.js}"></script>
+	</body>
+
+</html>

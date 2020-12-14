@@ -1,0 +1,31 @@
+package ${package}.service;
+
+import ${package}.domain.${className}DO;
+import com.ts.common.utils.Result;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public interface ${className}Service {
+	
+	${className}DO get(${pk.attrType} ${pk.attrname});
+	
+	List<${className}DO> list(Map<String, Object> map);
+	
+	int count(Map<String, Object> map);
+	
+	int save(Result result,${className}DO ${classname});
+	
+	int update(Result result,${className}DO ${classname});
+	
+	int remove(Result result,${pk.attrType} ${pk.attrname});
+	
+	int batchRemove(Result result,${pk.attrType}[] ${pk.attrname}s);
+}

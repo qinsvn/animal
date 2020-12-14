@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.label.dao.custom.BsDeviceCustomMapper">
+  
+  <resultMap id="BaseResultMap"  type="java.util.Map" extends="com.label.dao.auto.BsDeviceMapper.BaseResultMap">
+    <result column="work_shop_name" jdbcType="VARCHAR" property="workShopName" />
+    <result column="dpt_id" jdbcType="VARCHAR" property="dptId" />
+    <result column="dpt_name" jdbcType="VARCHAR" property="dptName" />
+  </resultMap>
+  
+  <select id="select" parameterType="java.util.Map"  resultMap="BaseResultMap">
+  	Select dv.*,bsws.`name` work_shop_name ,c.id dpt_id, c.fdName dpt_name from tb_bs_device dv inner join  tb_bs_workshop bsws on dv.workshop_id = bsws.id
+	inner join tb_company c on bsws.dpt_id = c.id 
+	where  1=1
+	<if test="id != null and id != ''">
+		and  dv.id = #{id}
+	</if>
+	<if test="notId != null and notId != ''">
+		and dv.id != #{notId}
+	</if>
+	<if test="deviceNum != null and deviceNum != ''">
+		and  dv.device_num = #{deviceNum}
+	</if>
+	<if test="dptId != null and dptId != ''">
+		and c.id = #{dptId}
+	</if>
+	<if test="workShopName != null and workShopName != ''">
+		and bsws.name LIKE CONCAT('%',#{workShopName},'%')
+	</if>
+	order by dv.update_time desc
+  </select>
+  
+</mapper>

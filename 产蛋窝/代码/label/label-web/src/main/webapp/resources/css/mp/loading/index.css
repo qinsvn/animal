@@ -1,0 +1,138 @@
+.lm-welcome{
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.lm-center-wrap{
+    width: 80%;
+    height: 348px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.lm-load-wrap{
+    position: relative;
+}
+.loader {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+.loader-outter {
+    position: absolute;
+    z-index: 2;
+    border: 4px solid #d0011c;/*no*/
+    border-left: 0;
+    border-bottom: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-sizing: border-box;
+    -webkit-animation: loader-outter 1s linear infinite;
+    animation: loader-outter 1s linear infinite;
+}
+.loader-outter-wrap{
+    position: absolute;
+    z-index: 1;
+    border: 4px solid #ddd;/*no*/
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.lm-load-logo{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.lm-load-logo img{
+    width:100%;
+    height: 100%;
+    vertical-align: middle;
+    animation: move 0.5s 0.1s infinite alternate ease-in-out;
+    -webkit-animation: move 0.5s 0.1s infinite alternate ease-in-out;
+}
+.lm-load-solgan{
+    height: 120px;
+    width: 90%;
+    margin: 60px auto;
+    /* background: url('../../../images/mp/loading/load_lmSlogan.png') no-repeat center center; */
+    background-size: contain;
+}
+/* ----------------     KEYFRAMES    ----------------- */
+@-webkit-keyframes loader-outter {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-outter {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes move {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    33% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+    66% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes move {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    33% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+    66% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}

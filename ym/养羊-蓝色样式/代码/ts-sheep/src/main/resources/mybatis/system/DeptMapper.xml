@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ts.system.dao.DeptDao">
+
+	<select id="get" resultType="com.ts.system.domain.DeptDO">
+		select
+		`dept_id`,`parent_id`,`name`,`order_num`,`del_flag`,`level`,`select_order`,`parents`,self_and_children_ids(sys_dept.dept_id) as `childrens` from sys_dept
+		where dept_id = #{value}
+	</select>
+
+	<select id="list" resultType="com.ts.system.domain.DeptDO">
+		select 
+		`dept_id`,`parent_id`,`name`,`order_num`,`del_flag`,`level`,`select_order`,`parents`,self_and_children_ids(sys_dept.dept_id) as `childrens` from
+		sys_dept
+		<where>
+			<if test="deptId != null and deptId != ''"> and dept_id = #{deptId} </if>
+			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+			<if test="name != null and name != ''"> and name = #{name} </if>
+			<if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
+			<if test="delFlag != null and delFlag != ''"> and del_flag = #{delFlag} </if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by dept_id desc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+
+	<select id="subList" resultType="com.ts.system.domain.DeptDO">
+	   <![CDATA[
+		select `dept_id`,`parent_id`,`order_num`,`del_flag`,`level`,`select_order`,`parents`,`childrens`
+		,case level
+	        when 3 then CONCAT('&nbsp;&nbsp;&nbsp;',name)
+			when 4 then CONCAT('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',name)
+			when 5 then CONCAT('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ',name)
+			when 6 then CONCAT('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',name)
+			when 7 then CONCAT('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',name)
+		else NAME end name
+		 from
+		sys_dept
+		]]>    
+		<include refid="com.ts.system.dao.DeptDao.subDept"/>
+		<include refid="com.ts.system.dao.DeptDao.subDeptByUser" /> 
+		<where>
+			<if test="deptId != null and deptId != ''"> and dept_id = #{deptId} </if>
+			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+			<if test="name != null and name != ''"> and name = #{name} </if>
+			<if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
+			<if test="delFlag != null and delFlag != ''"> and del_flag = #{delFlag} </if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by dept_id desc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	<select id="count" resultType="int">
+		select count(*) from sys_dept
+		<where>
+			<if test="deptId != null and deptId != ''"> and dept_id = #{deptId} </if>
+			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+			<if test="name != null and name != ''"> and name = #{name} </if>
+			<if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
+			<if test="delFlag != null and delFlag != ''"> and del_flag = #{delFlag} </if>
+		</where>
+	</select>
+
+	<insert id="save" parameterType="com.ts.system.domain.DeptDO"
+		useGeneratedKeys="true" keyProperty="deptId">
+		insert into sys_dept
+		(
+		`parent_id`,
+		`name`,
+		`order_num`,
+		`del_flag`,
+		`level`,
+		`select_order`
+		)
+		values
+		(
+		#{parentId},
+		#{name},
+		#{orderNum},
+		#{delFlag},
+		#{level},
+		#{selectOrder}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.ts.system.domain.DeptDO">
+		update sys_dept
+		<set>
+			<if test="parentId != null">`parent_id` = #{parentId}, </if>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="orderNum != null">`order_num` = #{orderNum}, </if>
+			<if test="level != null">`level` = #{level}, </if>
+			<if test="selectOrder != null">`select_order` = #{selectOrder}, </if>
+			<if test="delFlag != null">`del_flag` = #{delFlag}</if>
+		</set>
+		where dept_id = #{deptId}
+	</update>
+
+	<delete id="remove">
+		delete from sys_dept where dept_id = #{value}
+	</delete>
+
+	<delete id="batchRemove">
+		delete from sys_dept where dept_id in
+		<foreach item="deptId" collection="array" open="(" separator=","
+			close=")">
+			#{deptId}
+		</foreach>
+	</delete>
+	
+	<select id="listParentDept" resultType="long">
+		select DISTINCT parent_id from sys_dept
+	</select>
+
+    <select id="getDeptUserNumber" resultType="int">
+		select count(*) from sys_user where dept_id = #{value}
+	</select>
+	
+<!-- 数据权限  获取当前部门下以及其下级部门的数据	 -->	
+<!-- 	<include refid="com.ts.system.dao.DeptDao.subDept"/> -->
+	<sql id="subDept">
+	     <if test="curDeptId != null and keyForCurDeptId !=null">
+				inner join (SELECT dept_id as s_dept_id FROM sys_dept sd WHERE FIND_IN_SET( sd.dept_id, self_and_children_ids (#{curDeptId}) ) > 0) s_sys_dept
+				on s_sys_dept.s_dept_id =  ${keyForCurDeptId}
+		 </if>
+	</sql>
+		<!-- 数据权限  获取用户所在部门下以及其下级部门的数据	 -->
+	<!-- 	<include refid="com.ts.system.dao.DeptDao.subDeptByUser"/> -->
+	<sql id="subDeptByUser">
+	     <if test="curUserId != null and keyForCurUserId !=null">
+			 inner join (
+				select sys_user.user_id as s_user_id from sys_user join (SELECT dept_id as s_dept_id FROM sys_dept sd WHERE FIND_IN_SET( sd.dept_id, self_and_children_ids ((select dept_id from sys_user where user_id=#{curUserId})) ) > 0) sub_dept on sub_dept.s_dept_id = sys_user.dept_id
+				) s_sys_user on s_sys_user.s_user_id= ${keyForCurUserId}
+		 </if>
+	</sql>
+	
+</mapper>

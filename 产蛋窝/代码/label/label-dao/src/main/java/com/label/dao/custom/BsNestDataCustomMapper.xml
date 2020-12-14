@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.label.dao.custom.BsNestDataCustomMapper">
+  
+  <resultMap id="BaseResultMap"  type="java.util.Map" extends="com.label.dao.auto.BsNestDataMapper.BaseResultMap">
+    <result column="workshop_name" jdbcType="VARCHAR" property="workshopName" />
+    <result column="dpt_id" jdbcType="VARCHAR" property="dptId" />
+    <result column="inTimeEx" jdbcType="VARCHAR" property="inTimeEx" />
+    <result column="outTimeEx" jdbcType="VARCHAR" property="outTimeEx" />
+    <result column="inOderEx" jdbcType="VARCHAR" property="inOderEx" />
+  </resultMap>
+  <resultMap id="BaseResultMap20"  type="java.util.Map" extends="com.label.dao.auto.BsNestData20Mapper.BaseResultMap">
+    <result column="workshop_name" jdbcType="VARCHAR" property="workshopName" />
+    <result column="dpt_id" jdbcType="VARCHAR" property="dptId" />
+    <result column="inOderEx" jdbcType="VARCHAR" property="inOderEx" />
+  </resultMap>
+  
+  <select id="select" parameterType="java.util.Map"  resultMap="BaseResultMap">
+	  	SELECT
+				d.*, ws.`name` workshop_name,
+				ws.dpt_id,
+				DATE_FORMAT(d.in_time, '%Y-%m-%d %H:%i:%s') inTimeEx,
+				DATE_FORMAT(d.out_time, '%Y-%m-%d %H:%i:%s') outTimeEx,
+			    CONCAT( '第',d.in_order,'次') inOderEx
+			FROM
+				tb_bs_nest_data d
+			LEFT JOIN tb_bs_workshop ws ON ws.id = d.workshop_id
+	where  1=1
+	<if test="id != null and id != ''">
+		and  d.id = #{id}
+	</if>
+	<if test="rfidNum != null and rfidNum != ''">
+		and  d.rfid_num LIKE CONCAT('%',#{rfidNum},'%')
+	</if>
+	<if test="dptId != null and dptId != ''">
+		and d.dpt_id = #{dptId}
+	</if>
+	<if test="startInTime != null and startInTime != ''">
+		<![CDATA[  and d.in_time >= #{startInTime} ]]>
+	</if>
+	
+	<if test="endInTime != null and endInTime != ''">
+		<![CDATA[  and d.in_time <= #{endInTime} ]]>
+	</if>
+	<if test="workShopName != null and workShopName != ''">
+		and ws.name LIKE CONCAT('%',#{workShopName},'%')
+	</if>
+	<if test="outStatus != null and outStatus != ''">
+		and  d.out_status = #{outStatus}
+	</if>
+	ORDER BY
+		d.last_update_time DESC,
+		d.`in_order` DESC
+  </select>
+  
+  <select id="maxOrder" parameterType="java.lang.String"  resultType="java.lang.Integer">
+	  SELECT max(d.`in_order`) in_order FROM
+			`tb_bs_nest_data` d
+		WHERE  d.rfid_num = #{rfidNum}
+  </select>
+  
+  <select id="select20" parameterType="java.util.Map"  resultMap="BaseResultMap20">
+	  	SELECT
+				d.*, ws.`name` workshop_name,
+				ws.dpt_id,
+				CONCAT( '第',d.in_order,'次') inOderEx
+			FROM
+				`tb_bs_nest_data20` d
+			LEFT JOIN tb_bs_workshop ws ON ws.id = d.workshop_id
+			WHERE
+				1 = 1
+	<if test="id != null and id != ''">
+		and  d.id = #{id}
+	</if>
+	<if test="rfidNum != null and rfidNum != ''">
+		and  d.rfid_num LIKE CONCAT('%',#{rfidNum},'%')
+	</if>
+	<if test="dptId != null and dptId != ''">
+		and d.dpt_id = #{dptId}
+	</if>
+	<if test="workShopName != null and workShopName != ''">
+		and ws.name LIKE CONCAT('%',#{workShopName},'%')
+	</if>
+	ORDER BY
+		d.last_update_time DESC,
+		d.`in_order` DESC
+  </select>
+  
+  <select id="select20Static" parameterType="java.util.Map"  resultType="java.util.Map">
+		  SELECT
+				sta.*, tt.in_body_weight inBodyWeight,
+				ttt.out_body_weight outBodyWeight,
+				(
+					ttt.out_body_weight - tt.in_body_weight
+				) incBodyWeight,
+       			 tt.workshop_id workshopId
+			
+			FROM
+				(
+					SELECT
+						MIN(id) minId,
+						MAX(id) maxId,
+						SUM(t.eat_mt_weight) eatMtWeight
+					FROM
+						`tb_bs_nest_data` t
+					WHERE
+						t.rfid_num = #{rfidNum}
+						<![CDATA[AND t.out_time >= #{startTime} ]]>
+						<![CDATA[AND t.out_time <= #{endTime} ]]>
+					GROUP BY
+						t.rfid_num
+				) sta
+			INNER JOIN tb_bs_nest_data tt ON sta.minId = id
+			INNER JOIN tb_bs_nest_data ttt ON sta.maxId = ttt.id
+  </select>
+  
+    <select id="maxOrder20" parameterType="java.lang.String"  resultType="java.lang.Integer">
+	  SELECT max(d.`in_order`) in_order FROM
+			`tb_bs_nest_data20` d
+		WHERE  d.rfid_num = #{rfidNum}
+  </select>
+  
+    <select id="getNestDurations" parameterType="java.lang.String"  resultType="java.lang.Integer">
+	  select sum(t.nest_duration) sum from tb_bs_nest_data t where t.out_status = 2 and t.rfid_num =  #{rfidNum}
+  </select>
+  
+  
+  
+  <select id="selectNestDatas" parameterType="java.util.Map"  resultMap="BaseResultMap">
+	SELECT
+				d.*, ws.`name` workshop_name,
+				ws.dpt_id,
+				DATE_FORMAT(d.in_time, '%Y-%m-%d %H:%i:%s') inTimeEx,
+				DATE_FORMAT(d.out_time, '%Y-%m-%d %H:%i:%s') outTimeEx,
+			    CONCAT( '第',d.in_order,'次') inOderEx
+			FROM
+				tb_bs_nest_data d
+				inner join (SELECT MAX(id) id FROM `tb_bs_nest_data` t where  t.out_status = 2 group by t.rfid_num) m on d.id = m.id
+		  	LEFT JOIN tb_bs_workshop ws ON ws.id = d.workshop_id
+	where  1=1
+	<if test="id != null and id != ''">
+		and  d.id = #{id}
+	</if>
+	<if test="rfidNum != null and rfidNum != ''">
+		and  d.rfid_num LIKE CONCAT('%',#{rfidNum},'%')
+	</if>
+	<if test="dptId != null and dptId != ''">
+		and d.dpt_id = #{dptId}
+	</if>
+	<if test="startInTime != null and startInTime != ''">
+		<![CDATA[  and d.out_time >= #{startInTime} ]]>
+	</if>
+	
+	<if test="endInTime != null and endInTime != ''">
+		<![CDATA[  and d.out_time <= #{endInTime} ]]>
+	</if>
+	
+	<if test="startNestDuration != null and startNestDuration != ''">
+		<![CDATA[  and d.nest_duration >= #{startNestDuration} ]]>
+	</if>
+	
+	<if test="endNestDuration != null and endNestDuration != ''">
+		<![CDATA[  and d.nest_duration <= #{endNestDuration} ]]>
+	</if>
+	
+	<if test="startNestDurationSum != null and startNestDurationSum != ''">
+		<![CDATA[  and d.nest_duration_sum >= #{startNestDurationSum} ]]>
+	</if>
+	
+	<if test="endNestDurationSum != null and endNestDurationSum != ''">
+		<![CDATA[  and d.nest_duration_sum <= #{endNestDurationSum} ]]>
+	</if>
+	
+	<if test="workShopName != null and workShopName != ''">
+		and ws.name LIKE CONCAT('%',#{workShopName},'%')
+	</if>
+	ORDER BY
+		d.last_update_time DESC,
+		d.`in_order` DESC
+  </select>
+  
+  
+</mapper>

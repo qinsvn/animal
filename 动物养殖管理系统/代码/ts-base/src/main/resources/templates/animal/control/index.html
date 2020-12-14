@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>控制台台</title>
+<!-- 		<link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css" /> -->
+<!-- 		<link rel="stylesheet" href="../../css/wowskf/control.css" /> -->
+<!-- 		<link rel="stylesheet" href="../../css/serve/serve_work.css" /> -->
+		<link href="css/bootstrap.min.css?v=3.3.6" th:href="@{/css/bootstrap.min.css?v=3.3.6}" rel="stylesheet">
+		<link href="css/control/control_common.css" th:href="@{/control/css/control_common.css?v=3.3.6}" rel="stylesheet">
+		<link href="css/control/control.css" th:href="@{/css/control/control.css?v=3.3.6}" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div shiro:hasPermission="animal:inputs:inputs"  class="col-md-3 col-sm-6" >
+					<div data-id="a_tab_nav3" onclick="top.open('animal/inputs');">
+						<img  th:src="@{/img/control/inputs400.png}"  >
+					</div>
+					<span>投入品数据</span>
+				</div>
+
+				<div  shiro:hasPermission="animal:immuneRecord:immuneRecord	" class="col-md-3 col-sm-6">
+					<div data-id="a_tab_nav5"   onclick="top.open('animal/immuneRecord');">
+						<img  th:src="@{/img/control/immune.png}">
+					</div>
+					<span>检疫数据</span>
+				</div>
+
+				<div  shiro:hasPermission="animal:checkRecord:checkRecord" class="col-md-3 col-sm-6">
+					<div data-id="a_tab_nav9" style="width:80px;height:80px"  onclick="top.open('animal/checkRecord');">
+						<img  th:src="@{/img/control/check.png}">
+					</div>
+					<span>检验数据</span>
+				</div>
+				<div shiro:hasPermission="animal:substandardData:substandardData	" class="col-md-3 col-sm-6">
+					<div data-id="a_tab_nav6" onclick="top.open('animal/substandardData');">
+						<img  th:src="@{/img/control/substandar.png}">
+					</div>
+					<span>耗损数据</span>
+				</div>
+
+				<div shiro:hasPermission="animal:product:product" class="col-md-3 col-sm-6" >
+					<div data-id="a_tab_nav7" style="width:80px;height:80px" onclick="top.open('templates/animal/product/product.html');">
+						<img  th:src="@{/img/control/product.png}"  >
+					</div>
+					<span>产品数据</span>
+				</div>
+
+				<div shiro:hasPermission="animal:analysis:sale" class="col-md-3 col-sm-6">
+					<div data-id="a_tab_nav8" style="width:80px;height:80px"  onclick="top.open('templates/animal/analysis/orderAnalysis.html');">
+						<img th:src="@{/img/control/order.png}">
+					</div>
+					<span>订单数据</span>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

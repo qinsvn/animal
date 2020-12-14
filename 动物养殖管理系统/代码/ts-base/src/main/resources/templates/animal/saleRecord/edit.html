@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${saleRecord.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">批次：</label>
+								<div class="col-sm-8">
+									<input id="batchNum" name="batchNum" th:value="${saleRecord.batchNum}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">种类：</label>
+								<div class="col-sm-8">
+									<input id="typeName" name="typeName" th:value="${saleRecord.typeName}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">品种：</label>
+								<div class="col-sm-8">
+									<input id="varietyName" name="varietyName" th:value="${saleRecord.varietyName}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">投入品编号：</label>
+								<div class="col-sm-8">
+									<input id="num" name="num" th:value="${saleRecord.num}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">所属养殖户：</label>
+								<div class="col-sm-8">
+									<input id="deptId" name="deptId" th:value="${saleRecord.deptId}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">其他信息：</label>
+								<div class="col-sm-8">
+									<input id="otherInfo" name="otherInfo" th:value="${saleRecord.otherInfo}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">销售人员：</label>
+								<div class="col-sm-8">
+									<input id="createUser" name="createUser" th:value="${saleRecord.createUser}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">售卖时间：</label>
+								<div class="col-sm-8">
+									<input id="createTime" name="createTime" th:value="${saleRecord.createTime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">修改人：</label>
+								<div class="col-sm-8">
+									<input id="updateUser" name="updateUser" th:value="${saleRecord.updateUser}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">修改时间：</label>
+								<div class="col-sm-8">
+									<input id="updateTime" name="updateTime" th:value="${saleRecord.updateTime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">：</label>
+								<div class="col-sm-8">
+									<input id="remark1" name="remark1" th:value="${saleRecord.remark1}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">：</label>
+								<div class="col-sm-8">
+									<input id="remark2" name="remark2" th:value="${saleRecord.remark2}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">：</label>
+								<div class="col-sm-8">
+									<input id="remark3" name="remark3" th:value="${saleRecord.remark3}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="js/appjs/animal/saleRecord/edit.js">
+	</script>
+</body>
+</html>

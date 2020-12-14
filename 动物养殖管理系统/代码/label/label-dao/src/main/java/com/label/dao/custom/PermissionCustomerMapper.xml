@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.label.dao.custom.PermissionCustomerMapper">
+  <!-- 按条件查询 -->
+  <select id="selectByList" parameterType="com.label.common.model.base.Permission" resultType="com.label.common.model.custom.permission.PermissionMenu">
+  	select * from tb_permission 
+  </select>
+  <select id="listInIds" parameterType="java.lang.Integer" resultType="java.lang.String">
+  	select fdValue from tb_permission
+  	<if test="ids!=null">
+	  	where id in
+	  	<foreach collection="ids" index="index" item="id" open="("
+			separator="," close=")">
+			#{id,jdbcType=INTEGER}
+		</foreach>
+  	</if>
+  </select>
+</mapper>

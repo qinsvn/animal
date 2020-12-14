@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.label.dao.custom.CompanyCustomMapper">
+	<insert id="insetCompanyReturnId" useGeneratedKeys="true" keyProperty="id" parameterType="com.label.common.model.base.Company">
+    insert into tb_company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="fdName != null">
+        fdName,
+      </if>
+      <if test="fdAddress != null">
+        fdAddress,
+      </if>
+      <if test="fdDomain != null">
+        fdDomain,
+      </if>
+      <if test="fdEmail != null">
+        fdEmail,
+      </if>
+      <if test="fdPhone != null">
+        fdPhone,
+      </if>
+      <if test="fdFax != null">
+        fdFax,
+      </if>
+      <if test="fdCode != null">
+        fdCode,
+      </if>
+      <if test="fdCreateTime != null">
+        fdCreateTime,
+      </if>
+      <if test="fdUpdateTime != null">
+        fdUpdateTime,
+      </if>
+      <if test="fdStartEfft != null">
+        fdStartEfft,
+      </if>
+      <if test="fdEndEfft != null">
+        fdEndEfft,
+      </if>
+      <if test="fdStatus != null">
+        fdStatus,
+      </if>
+      <if test="fdType != null">
+        fdType,
+      </if>
+      <if test="fdParentID != null">
+        fdParentID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fdName != null">
+        #{fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAddress != null">
+        #{fdAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="fdDomain != null">
+        #{fdDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmail != null">
+        #{fdEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPhone != null">
+        #{fdPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFax != null">
+        #{fdFax,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCode != null">
+        #{fdCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreateTime != null">
+        #{fdCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdUpdateTime != null">
+        #{fdUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdStartEfft != null">
+        #{fdStartEfft,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdEndEfft != null">
+        #{fdEndEfft,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdStatus != null">
+        #{fdStatus,jdbcType=TINYINT},
+      </if>
+      <if test="fdType != null">
+        #{fdType,jdbcType=TINYINT},
+      </if>
+      <if test="fdParentID != null">
+        #{fdParentID,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <insert id="insetCompanys" parameterType="java.util.Map">
+  	INSERT INTO tb_company (fdName,fdAddress,fdDomain,fdEmail,fdPhone,fdFax,fdCode,fdCreateTime,fdUpdateTime)
+	VALUES 
+  	<if test='list != null and list.size > 0'>
+	  	<foreach collection="list" item="item" separator=",">
+	  		(#{item.fdName},#{item.fdAddress},#{item.fdDomain},#{item.fdEmail},#{item.fdPhone},
+	  		#{item.fdFax},#{item.fdCode},NOW(),NOW())
+	  	</foreach>
+  	</if>
+  	
+  </insert>
+  
+  <select id="listCompanys" parameterType="java.util.Map" 
+  	resultMap="com.label.dao.auto.CompanyMapper.BaseResultMap">
+  	SELECT
+  	<include refid="com.label.dao.auto.CompanyMapper.Base_Column_List" />
+  	FROM tb_company
+  	WHERE 1=1
+  	<if test="fdName != null and fdName != ''">
+  		AND fdName LIKE CONCAT('%',#{fdName},'%')
+  	</if>
+  	<if test="fdType != null and fdType != ''">
+  		AND fdType= #{fdType}
+  	</if>
+  	<if test="companyId != null and companyId != ''">
+  		AND id = #{companyId}
+  	</if>
+  	ORDER BY fdUpdateTime DESC
+  </select>
+  
+  <delete id="deleteCompanys" parameterType="java.util.Map">
+  	DELETE FROM tb_company WHERE id IN 
+  	<foreach collection="list" item="item" open="(" close=")" separator=",">
+  		#{item}
+  	</foreach>
+  </delete>
+  
+  <select id="listAllCompanys" parameterType="java.util.Map" resultType="java.util.Map">
+  	SELECT c.id id, c.fdName fdName FROM tb_company c where c.fdStatus=0
+  </select>
+  
+  <!-- 添加默认角色 -->
+  <insert id="insertDefulRoleUser" useGeneratedKeys="true" keyProperty="rid" parameterType="java.util.Map">
+  	insert into tb_role (fdName,fdDesp,fdCompanyId,fdPermissions,fdTime,fdCanDel) values(#{name},'系统默认管理（不可删除）',#{cid},'1,2,3,4,5,11,12,13,14,15,16,17,18,19,20,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99',now(),0);
+  </insert>
+  
+  <!-- 添加所属角色信息 -->
+  <insert id="insertRole" parameterType="java.util.Map">
+  	insert into tb_role_user_ref value(#{rid},#{uid},#{cid});
+  </insert>
+  
+  <select id="lastCompanys" resultMap="com.label.dao.auto.CompanyMapper.BaseResultMap">
+  	select 
+	<include refid="com.label.dao.auto.CompanyMapper.Base_Column_List" />
+	from tb_company ORDER BY id DESC LIMIT 1
+  </select>
+</mapper>

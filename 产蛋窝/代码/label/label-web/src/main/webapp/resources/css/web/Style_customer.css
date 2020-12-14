@@ -1,0 +1,39 @@
+@charset "utf-8";
+html,.vboxtable{
+    width: 100%;
+    height: 100%;
+}
+.vboxtable{
+	overflow-y:auto;
+	height:90%;
+}
+.infoBody{
+	overflow: auto!important;
+}
+#inner_content{
+	width: 100%;
+}
+.colork{
+    color: #4cb6cb;
+    padding-right:10px;
+}
+.max-table{
+	max-height: 220px;
+	overflow: auto;
+}
+.panel-body{
+	padding-bottom: 0;
+	padding-right: 0;
+}
+.rightCon{
+	margin-bottom: 40px;
+}
+@media (min-width: 768px) and (max-width: 1365px){
+	.rightCon{
+		width: 180px;
+		padding: 0;
+	}
+	.rightCon .col-sm-6{
+		width: 70%;
+	}
+}

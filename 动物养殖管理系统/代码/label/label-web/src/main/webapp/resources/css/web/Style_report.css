@@ -1,0 +1,40 @@
+@charset "utf-8";
+.infoBody{
+	overflow: auto!important;
+}
+ul,ol{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+
+.wrappers{
+	padding: 15px 15px 0;
+}
+.input-group{
+	display: inline-block;
+	padding-bottom: 15px;
+}
+.control-label{
+	min-width: 96px;
+	line-height: 35px;
+    vertical-align: top;
+    margin-bottom: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: right;
+}
+.inline input{
+	width: 170px!important;
+}
+@media (min-width: 768px) and (max-width: 1560px){
+	.xScroll{
+		width: 1688px;
+	}
+	.msScroll{
+		width: 1480px;
+	}
+	.xScrollBox{
+		overflow-x: scroll;
+	}
+}

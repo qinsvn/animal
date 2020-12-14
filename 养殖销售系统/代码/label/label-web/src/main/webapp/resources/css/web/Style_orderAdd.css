@@ -1,0 +1,26 @@
+body{
+}
+ul,ol{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+
+.wrappers{
+	padding: 15px 15px 0;
+}
+.input-group{
+	display: inline-block;
+	padding-bottom: 15px;
+}
+.control-label{
+	line-height: 35px;
+	min-width: 106px;
+    vertical-align: top;
+    margin-bottom: 0;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.inline input{
+	min-width: 165px;
+}

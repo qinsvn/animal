@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="exceptions">
+        <item>请选择工作模式</item>
+        <item>禽类入库</item>
+        <item>蛋类入库</item>
+        <item>阉割采集</item>
+        <item>免疫采集</item>
+        <item>蛋类次品采集</item>
+        <item>禽类次品采集</item>
+        <item>蛋类出库采集</item>
+        <item>禽类出库采集</item>
+        <item>备用模式1</item>
+        <item>备用模式2</item>
+        <item>备用模式3</item>
+        <item>备用模式4</item>
+        <item>备用模式5</item>
+        <item>备用模式6</item>
+        <item>备用模式7</item>
+        <item>备用模式8</item>
+    </string-array>
+</resources>

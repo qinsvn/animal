@@ -1,0 +1,215 @@
+package com.ts.animal.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+
+
+
+/**
+ * 场地表
+ * 
+ * @author bobby
+ * @email bobby@126.com
+ * @date 2020-02-04 22:03:31
+ */
+public class SpaceDO implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	//
+	private Integer id;
+	//场地名称
+	private String name;
+	//场地位置
+	private String address;
+	//场地负责人
+	private String headMan;
+	//联系电话
+	private String phone;
+	//
+	private Integer deptId;
+	//其他信息
+	private String otherInfo;
+	//创建人
+	private Integer createUser;
+	//创建时间
+	private Date createTime;
+	//修改人
+	private Integer updateUser;
+	//修改时间
+	private Date updateTime;
+	//
+	private String remark1;
+	//
+	private String remark2;
+	//
+	private String remark3;
+
+	/**
+	 * 设置：
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	/**
+	 * 获取：
+	 */
+	public Integer getId() {
+		return id;
+	}
+	/**
+	 * 设置：场地名称
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	/**
+	 * 获取：场地名称
+	 */
+	public String getName() {
+		return name;
+	}
+	/**
+	 * 设置：场地位置
+	 */
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	/**
+	 * 获取：场地位置
+	 */
+	public String getAddress() {
+		return address;
+	}
+	/**
+	 * 设置：场地负责人
+	 */
+	public void setHeadMan(String headMan) {
+		this.headMan = headMan;
+	}
+	/**
+	 * 获取：场地负责人
+	 */
+	public String getHeadMan() {
+		return headMan;
+	}
+	/**
+	 * 设置：联系电话
+	 */
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	/**
+	 * 获取：联系电话
+	 */
+	public String getPhone() {
+		return phone;
+	}
+	/**
+	 * 设置：
+	 */
+	public void setDeptId(Integer deptId) {
+		this.deptId = deptId;
+	}
+	/**
+	 * 获取：
+	 */
+	public Integer getDeptId() {
+		return deptId;
+	}
+	/**
+	 * 设置：其他信息
+	 */
+	public void setOtherInfo(String otherInfo) {
+		this.otherInfo = otherInfo;
+	}
+	/**
+	 * 获取：其他信息
+	 */
+	public String getOtherInfo() {
+		return otherInfo;
+	}
+	/**
+	 * 设置：创建人
+	 */
+	public void setCreateUser(Integer createUser) {
+		this.createUser = createUser;
+	}
+	/**
+	 * 获取：创建人
+	 */
+	public Integer getCreateUser() {
+		return createUser;
+	}
+	/**
+	 * 设置：创建时间
+	 */
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+	/**
+	 * 获取：创建时间
+	 */
+	public Date getCreateTime() {
+		return createTime;
+	}
+	/**
+	 * 设置：修改人
+	 */
+	public void setUpdateUser(Integer updateUser) {
+		this.updateUser = updateUser;
+	}
+	/**
+	 * 获取：修改人
+	 */
+	public Integer getUpdateUser() {
+		return updateUser;
+	}
+	/**
+	 * 设置：修改时间
+	 */
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+	/**
+	 * 获取：修改时间
+	 */
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+	/**
+	 * 设置：
+	 */
+	public void setRemark1(String remark1) {
+		this.remark1 = remark1;
+	}
+	/**
+	 * 获取：
+	 */
+	public String getRemark1() {
+		return remark1;
+	}
+	/**
+	 * 设置：
+	 */
+	public void setRemark2(String remark2) {
+		this.remark2 = remark2;
+	}
+	/**
+	 * 获取：
+	 */
+	public String getRemark2() {
+		return remark2;
+	}
+	/**
+	 * 设置：
+	 */
+	public void setRemark3(String remark3) {
+		this.remark3 = remark3;
+	}
+	/**
+	 * 获取：
+	 */
+	public String getRemark3() {
+		return remark3;
+	}
+}

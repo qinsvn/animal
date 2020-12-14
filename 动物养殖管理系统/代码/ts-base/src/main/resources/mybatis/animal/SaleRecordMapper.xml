@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ts.animal.dao.SaleRecordDao">
+
+	<select id="get" resultType="com.ts.animal.domain.SaleRecordDO">
+		select `id`,`num`,`batch_num`,`type_name`,`variety_name`,`inputs_id`,`customer_id`,`dept_id`,`other_info`,`create_user`,`create_time`,`update_user`,`update_time`,`sale_num`,`remark1`,`remark2`,`remark3` from bs_sale_record where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.ts.animal.domain.SaleRecordDO">
+		select `id`,`num`,`batch_num`,`type_name`,`variety_name`,`inputs_id`,`customer_id`,`dept_id`,`other_info`,`create_user`,`create_time`,`update_user`,`update_time`,`sale_num`,`remark1`,`remark2`,`remark3` from bs_sale_record
+		<include refid="com.ts.system.dao.DeptDao.subDept"/>
+		<include refid="com.ts.system.dao.DeptDao.subDeptByUser" /> 
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="num != null and num != ''"> and num = #{num} </if>
+		  		  <if test="batchNum != null and batchNum != ''"> and batch_num = #{batchNum} </if>
+		  		  <if test="typeName != null and typeName != ''"> and type_name = #{typeName} </if>
+		  		  <if test="varietyName != null and varietyName != ''"> and variety_name = #{varietyName} </if>
+		  		  <if test="inputsId != null and inputsId != ''"> and inputs_id = #{inputsId} </if>
+		  		  <if test="customerId != null and customerId != ''"> and customer_id = #{customerId} </if>
+		  		  <if test="deptId != null and deptId != ''"> and dept_id = #{deptId} </if>
+		  		  <if test="otherInfo != null and otherInfo != ''"> and other_info = #{otherInfo} </if>
+		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateUser != null and updateUser != ''"> and update_user = #{updateUser} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="saleNum != null and saleNum != ''"> and sale_num = #{saleNum} </if>
+		  		  <if test="remark1 != null and remark1 != ''"> and remark1 = #{remark1} </if>
+		  		  <if test="remark2 != null and remark2 != ''"> and remark2 = #{remark2} </if>
+		  		  <if test="remark3 != null and remark3 != ''"> and remark3 = #{remark3} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from bs_sale_record
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="num != null and num != ''"> and num = #{num} </if>
+		  		  <if test="batchNum != null and batchNum != ''"> and batch_num = #{batchNum} </if>
+		  		  <if test="typeName != null and typeName != ''"> and type_name = #{typeName} </if>
+		  		  <if test="varietyName != null and varietyName != ''"> and variety_name = #{varietyName} </if>
+		  		  <if test="inputsId != null and inputsId != ''"> and inputs_id = #{inputsId} </if>
+		  		  <if test="customerId != null and customerId != ''"> and customer_id = #{customerId} </if>
+		  		  <if test="deptId != null and deptId != ''"> and dept_id = #{deptId} </if>
+		  		  <if test="otherInfo != null and otherInfo != ''"> and other_info = #{otherInfo} </if>
+		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateUser != null and updateUser != ''"> and update_user = #{updateUser} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="saleNum != null and saleNum != ''"> and sale_num = #{saleNum} </if>
+		  		  <if test="remark1 != null and remark1 != ''"> and remark1 = #{remark1} </if>
+		  		  <if test="remark2 != null and remark2 != ''"> and remark2 = #{remark2} </if>
+		  		  <if test="remark3 != null and remark3 != ''"> and remark3 = #{remark3} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.ts.animal.domain.SaleRecordDO" useGeneratedKeys="true" keyProperty="id">
+		insert into bs_sale_record
+		(
+			`num`, 
+			`batch_num`, 
+			`type_name`, 
+			`variety_name`, 
+			`inputs_id`, 
+			`customer_id`, 
+			`dept_id`, 
+			`other_info`, 
+			`create_user`, 
+			`create_time`, 
+			`update_user`, 
+			`update_time`, 
+			`sale_num`, 
+			`remark1`, 
+			`remark2`, 
+			`remark3`
+		)
+		values
+		(
+			#{num}, 
+			#{batchNum}, 
+			#{typeName}, 
+			#{varietyName}, 
+			#{inputsId}, 
+			#{customerId}, 
+			#{deptId}, 
+			#{otherInfo}, 
+			#{createUser}, 
+			#{createTime}, 
+			#{updateUser}, 
+			#{updateTime}, 
+			#{saleNum}, 
+			#{remark1}, 
+			#{remark2}, 
+			#{remark3}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.ts.animal.domain.SaleRecordDO">
+		update bs_sale_record 
+		<set>
+			<if test="num != null">`num` = #{num}, </if>
+			<if test="batchNum != null">`batch_num` = #{batchNum}, </if>
+			<if test="typeName != null">`type_name` = #{typeName}, </if>
+			<if test="varietyName != null">`variety_name` = #{varietyName}, </if>
+			<if test="inputsId != null">`inputs_id` = #{inputsId}, </if>
+			<if test="customerId != null">`customer_id` = #{customerId}, </if>
+			<if test="deptId != null">`dept_id` = #{deptId}, </if>
+			<if test="otherInfo != null">`other_info` = #{otherInfo}, </if>
+			<if test="createUser != null">`create_user` = #{createUser}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="updateUser != null">`update_user` = #{updateUser}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="saleNum != null">`sale_num` = #{saleNum}, </if>
+			<if test="remark1 != null">`remark1` = #{remark1}, </if>
+			<if test="remark2 != null">`remark2` = #{remark2}, </if>
+			<if test="remark3 != null">`remark3` = #{remark3}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from bs_sale_record where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from bs_sale_record where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

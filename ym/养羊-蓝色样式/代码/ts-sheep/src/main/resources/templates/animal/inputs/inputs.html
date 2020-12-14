@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<style>
+	table .layui-upload-file{
+		display: none;
+	}
+</style>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12">
+			<div class="ibox">
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+					     
+					     <form class="form-inline">
+					     		<div class="form-group m-r">
+									<label for="name">批次</label>
+									<input type="text" class="form-control" id="con_batchNum"  placeholder="请输入批次">
+								</div>
+								<div class="form-group m-r">
+									<label for="name">编号</label>
+									<input type="text" class="form-control" id="con_num" placeholder="请输入投入品编号">
+								</div>
+							 <div class="form-group m-r">
+								 <label for="name">上代编号</label>
+								 <input type="text" class="form-control" id="con_parentNum" placeholder="请输入投入品编号">
+							 </div>
+
+							 <div class="form-group m-r">
+								 <label for="name">上上代编号</label>
+								 <input type="text" class="form-control" id="con_pparentNum" placeholder="请输入投入品编号">
+							 </div>
+															
+<!--								<div class="form-group m-r">-->
+<!--									<label for="name">种类</label>-->
+<!--									<sys:dict type="animal_type" id="con_typeName" name="con_typeName" class="form-control"  style="width: 178px"  firstValue="" firstText="请选择种类" onchange="sub.resetDict('con_typeName','con_varietyName')"  /> -->
+<!--								</div>-->
+								<div class="form-group m-r">
+									<label for="name">品种</label>
+									<sys:dict type="animal_varieties" id="con_varietyName" name="con_varietyName" class="form-control"   style="width: 173px"  firstValue="" firstText="请选择品种"  />
+								</div>
+								<div class="form-group m-r">
+									<label for="name">状态</label>
+<!-- 									<input type="text" class="form-control" id="con_status" placeholder="请输入状态"> -->
+									<sys:dict type="inputs_status" id="con_status" name="con_status" class="form-control"   style="width: 173px"  firstValue="" firstText="请选择状态"  />
+								</div>
+
+								 <div class="form-group m-r">
+									 <label for="name">出生日期</label>
+									 <input type="text" class="form-control" id="con_startBirthday" placeholder="开始">
+								 </div>
+								 <div class="form-group m-r">
+									 <label for="name">到</label>
+									 <input type="text" class="form-control" id="con_endBirthday" placeholder="结束">
+								 </div>
+							</form>
+							
+						<div class="columns pull-left">
+							<button shiro:hasPermission="animal:inputs:add" type="button" class="btn  btn-primary" onclick="add()">
+								<i class="fa fa-plus" aria-hidden="true"></i>添加
+							</button>
+							<button shiro:hasPermission="animal:immuneRecord:add" type="button" class="btn  btn-primary" onclick="immune()">
+								<i class=" fa fa-eyedropper" aria-hidden="true"></i>检疫
+							</button>
+							<button shiro:hasPermission="animal:checkRecord:add" type="button" class="btn  btn-primary" onclick="check()">
+								<i class="fa fa-check-circle-o" aria-hidden="true"></i>检查
+							</button>
+							<button shiro:hasPermission="animal:conception:nconception" type="button" class="btn  btn-primary" onclick="nconception()">
+								<i class="fa fa-check-circle-o" aria-hidden="true"></i>未受孕
+							</button>
+							<button shiro:hasPermission="animal:inputs:batchRemove" type="button" class="btn  btn-danger"
+									onclick="batchRemove()">
+								<i class="fa fa-trash" aria-hidden="true"></i>删除
+							</button>
+<!--							<button type="button" class="btn  btn-primary" id="uploadButt"><i class="fa fa-cloud"></i>上传照片</button>-->
+						</div>
+						<div class="columns pull-right">
+						    <button class="btn btn-white" onclick="reset()">重置</button>
+							<button class="btn btn-success" onclick="reLoad()">查询</button>
+						</div>
+					</div>
+					
+						<table id="exampleTable" data-mobile-responsive="true" >
+						</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自ts的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="animal:inputs:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="animal:inputs:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="animal:inputs:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script src="js/layui.js"></script>
+	<script type="text/javascript" th:src="${'js/appjs/animal/inputs/inputs.js?random='+#strings.randomAlphanumeric(9)}"></script>
+</body>
+</html>

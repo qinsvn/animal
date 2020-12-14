@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>主页</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/reset.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/border.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/weui.min.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/jquery-weui.min.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/common.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/pages/userInfo.css}" />
+	</head>
+
+	<body>
+
+		<section class="container" id="section">
+			<div class="headerBox  headerBox-color wx-flex">
+<!-- 				<div class="headerBox-l"> -->
+<!-- 					<img src="" /> -->
+<!-- 				</div> -->
+				<div class="headerBox-r">
+					<p class="headerBox-r-t"><span>欢迎使用</span><span style="margin-left: 20px">当前用户：</span><span  th:text="${session.sysUser.name}"></span></p>
+<!-- 					<p class="headerBox-r-b"></p> -->
+				</div>
+			</div>
+			<div class="formBox weui-cells weui-cells_form">
+				<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">批次编号</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input id="batchNum" type="text" class="weui-input" placeholder="请输入批次编号">
+					</div>
+				</div>
+				<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">RFID编号</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input id="num"  style="font-size: 12px;" type="text" class="weui-input" disabled>
+					</div>
+				</div>
+				<div class="weui-cell weui-cell_select">
+					<div class="weui-cell__hd">
+						<label class="weui-label">工作模式</label>
+					</div>
+					<div class="weui-cell__bd">
+						<sys:dict type="work_moel" id="workMoel" name="workMoel" class="weui-select"  value='1000'   firstValue="1000" firstText="查看动物信息"/> 
+					</div>
+				</div>
+				<div class="weui-cell weui-cell_select">
+					<div class="weui-cell__hd"><label class="weui-label">动物种类</label></div>
+					<div class="weui-cell__bd">
+						<sys:dict type="animal_type" id="typeName" name="typeName" class="weui-select" firstValue="" firstText="请选择种类" onchange="sub.resetDict('typeName','varietyName')"  />
+					</div>
+				</div>
+				<div class="weui-cell weui-cell_select">
+					<div class="weui-cell__hd"><label class="weui-label">动物品种</label></div>
+					<div class="weui-cell__bd">
+						<sys:dict type="animal_varieties" id="varietyName" name="varietyName" class="weui-select"      firstValue="" firstText="请选择品种"  />
+					</div>
+				</div>
+				<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">出生日期</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input id="birthday" type="date" class="weui-input" placeholder="请输入出生日期">
+					</div>
+				</div>
+				<div class="weui-cell weui-cell_select">
+					<div class="weui-cell__hd">
+						<label class="weui-label">供应商</label>
+					</div>
+					<div class="weui-cell__bd">
+						<sys:dict th:onload="'get:animal/supplier/dict/list?cDeptId='+${session.sysUser.deptId}" 
+										superValueText="deptId" valueText="id" nameText="name"  id="supplierId" name="supplierId" 
+										class="weui-select"  style=""  firstValue=""  firstText="请选择供应商"  />
+					</div>
+				</div>
+				
+				<div class="weui-cell weui-cell_select">
+					<div class="weui-cell__hd">
+						<label class="weui-label">客户</label>
+					</div>
+					<div class="weui-cell__bd">
+<!-- 						<sys:dict type="sex" id="sex" name="sex" class="weui-select"    firstValue="-1" firstText="请选择客户"   />  -->
+						<sys:dict th:onload="'get:animal/customer/dict/list?cDeptId='+${session.sysUser.deptId}" 
+										superValueText="deptId" valueText="id" nameText="name"  id="customerId" name="customerId" 
+										class="weui-select"  style=""  firstValue=""  firstText="请选择客户"  />
+					</div>
+				</div>
+				
+				<div class="weui-cell weui-cell_select">
+					<div class="weui-cell__hd">
+						<label class="weui-label">场地</label>
+					</div>
+					<div class="weui-cell__bd">
+						<sys:dict th:onload="'get:animal/space/dict/list?cDeptId='+${session.sysUser.deptId}" 
+										superValueText="deptId" valueText="id" nameText="name"  id="spaceId" name="spaceId" 
+										class="weui-select"  style=""  firstValue=""  firstText="请选择场地"  />
+					</div>
+				</div>
+			
+			<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">体重</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input id="initWeight" type="text" class="weui-input" value="200kg">
+					</div>
+				</div>
+			
+			<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">日龄</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input id="immuneAge" type="text" class="weui-input" value="90天">
+					</div>
+				</div>
+			<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">检疫药物</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input id="immuneDrug" type="text" class="weui-input" placeholder="请输入检疫药物">
+					</div>
+				</div>
+			<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">检疫结果</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input id="immuneResult"  type="text" class="weui-input" value="正常">
+					</div>
+				</div>
+			<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">检查体重</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input id="checkWeight" type="text" class="weui-input" value="210kg">
+					</div>
+				</div>
+			<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">检查结果</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input id="checkResult" type="text" class="weui-input" value="正常">
+					</div>
+				</div>
+			<div class="weui-cell weui-cell_select">
+					<div class="weui-cell__hd">
+						<label class="weui-label">耗损原因</label>
+					</div>
+					<div class="weui-cell__bd">
+<!-- 						<input id="substandardReason" type="text" class="weui-input"> -->
+							<sys:dict type="substandard_reason" id="substandardReason" name="substandardReason"  class="weui-select"  value="death"     firstValue="" firstText="请选择耗损原因"  />
+					</div>
+				</div>
+			<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">其他信息</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input id="otherInfo" type="text" class="weui-input" value="无">
+					</div>
+				</div>
+				
+				
+				<div class="weui-cell weui-cell_switch">
+					<div class="weui-cell__bd">启用/停用</div>
+					<div class="weui-cell__ft">
+<!-- 					 onClick="window.androidJS.action({'aa':'12'})" -->
+						<input id="actionButt" class="weui-switch" type="checkbox">
+					</div>
+					<div class="weui-cell__ft" style="margin-left: 50px">
+						<a id="clearLog" class="weui-btn weui-btn_default" href="javascript:">清理日志</a>
+				   </div>
+				</div>
+			</div>
+				<div class="weui-cell">
+<!-- 					<div class="weui-cell__hd"><label class="weui-label">其他信息</label></div> -->
+					<div class="weui-cell__bd">
+						<textarea id="log" class="weui-textarea" placeholder="日志打印" rows="10" disabled></textarea>
+					</div>
+				</div>
+<!-- 			<a class="weui-btn weui-btn_default submitBtn" href="javascript:">保存</a> -->
+		</section>
+		<section id="bootom">
+			<div style="position:fixed;bottom:0px; width: 100%;">
+				<a id="logout" href="javascript:;" class="weui-btn weui-btn_default" >登出系统</a>
+			</div>
+		</section>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/jquery.min.js}"></script>
+		<script type="text/javascript">
+		var ctx = "[[${#request.getContextPath()}]]";
+			$("input").blur(function() {
+				setTimeout(function() {
+					var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+					window.scrollTo(0, Math.max(scrollHeight - 1, 0));
+				}, 100);
+			});
+			$("textarea").blur(function() {
+				setTimeout(function() {
+					var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+					window.scrollTo(0, Math.max(scrollHeight - 1, 0));
+				}, 100);
+			});
+			
+			//接收安卓发送过来的数据
+			function receiveAndroid(msg){
+				 var objMap = JSON.parse(msg);
+				 if(objMap.type=='1'){//接收标签数据
+					 if(objMap.code=='0'){//成功
+						 $('#num').val(objMap.data);
+						//提交数据到服务器
+						 putData(function(data){
+							 playSound(data);
+						 	androidJSaction(objMap);
+						 });
+					 }else{
+						 //播放失败声音
+						 playSound('-1');
+						 $('#log').prepend(now()+"  未采集到任何数据\n");
+					 }
+				 }
+				 //测试
+				if(objMap.type=='6')
+				{
+					$('#log').prepend(now()+"  按键值："+ objMap.data+"\n");
+				}
+			}
+			
+			
+			 //监听 按手持机的扫描键
+			// document.onkeydown = function (event) {
+			// 	$('#log').prepend(now()+"  按键obj："+JSON.stringify(event)+"\n");
+			// 	$('#log').prepend(now()+"  按键值："+event.code+"\n");
+			// 	if(event.code=='F16'){//触发读取标签
+			// 		getRFID();
+			// 	}
+		  // };
+		  
+		  //触发获取RFID标签
+		  function getRFID(){
+			  var params = {};
+				params.id=Math.random()+'';
+				params.code='0';//成功
+				params.type='0';//触发获取标签   安卓获取
+				androidJSaction(params);
+		  }
+		  
+		  //播放声音
+		  function playSound(isSeccess){
+			  var params = {};
+				params.id=Math.random()+'';
+				params.type='2';//播放声音
+				params.data=isSeccess;
+				androidJSaction(params);
+		  }
+
+		  //调用安卓方法
+		  function androidJSaction(params ){
+			  var msg = JSON.stringify(params);
+				window.androidJS.action(msg);
+		  }
+		  
+		</script>
+<!--		<script type="text/javascript" th:src="@{/js/plugins/laydate/laydate.js"></script>-->
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/jquery-weui.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/template-web.js}"></script>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/pages/index.js}"></script>
+	</body>
+
+</html>

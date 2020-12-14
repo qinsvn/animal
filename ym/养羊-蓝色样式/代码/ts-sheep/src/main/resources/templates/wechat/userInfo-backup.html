@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>个人信息</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/reset.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/border.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/weui.min.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/jquery-weui.min.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/common.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/pages/userInfo.css}" />
+	</head>
+
+	<body>
+
+		<section class="container" id="section">
+			<div class="headerBox wx-flex">
+				<div class="headerBox-l">
+					<img src="" />
+				</div>
+				<div class="headerBox-r">
+					<p class="headerBox-r-t">用户昵称</p>
+					<p class="headerBox-r-b"><span>注册：2020-01-20</span><span>标签</span></p>
+				</div>
+			</div>
+			<div class="formBox weui-cells weui-cells_form">
+				<div class="weui-cell weui-cell_select">
+					<div class="weui-cell__hd">
+						<label class="weui-label">工作模式</label>
+					</div>
+					<div class="weui-cell__bd">
+						<sys:dict type="work_moel" id="work_moel" name="work_moel" class="weui-select"    firstValue="-1" firstText="请选择工作模式"   /> 
+					</div>
+				</div>
+				<div class="weui-cell">
+					<div class="weui-cell__hd"><label class="weui-label">动物种类</label></div>
+					<div class="weui-cell__bd">
+						<sys:dict type="animal_type" id="animal_type" name="animal_type" class="weui-select"    firstValue="-1" firstText="请选择动物种类"   /> 
+					</div>
+				</div>
+				<div class="weui-cell">
+					<div class="weui-cell__hd"><label class="weui-label">动物品种</label></div>
+					<div class="weui-cell__bd">
+						<sys:dict type="animal_varieties" id="animal_varieties" name="animal_varieties" class="weui-select"    firstValue="-1" firstText="请选择动物品种"   /> 
+					</div>
+				</div>
+				
+				<div class="weui-cell weui-cell_select">
+					<div class="weui-cell__hd">
+						<label class="weui-label">供应商</label>
+					</div>
+					<div class="weui-cell__bd">
+						<sys:dict type="sex" id="sex" name="sex" class="weui-select"    firstValue="-1" firstText="请选择供应商"   /> 
+					</div>
+				</div>
+				
+				<div class="weui-cell weui-cell_select">
+					<div class="weui-cell__hd">
+						<label class="weui-label">客户</label>
+					</div>
+					<div class="weui-cell__bd">
+						<sys:dict type="sex" id="sex" name="sex" class="weui-select"    firstValue="-1" firstText="请选择客户"   /> 
+					</div>
+				</div>
+				
+				<div class="weui-cell weui-cell_select">
+					<div class="weui-cell__hd">
+						<label class="weui-label">场地</label>
+					</div>
+					<div class="weui-cell__bd">
+						<sys:dict type="sex" id="sex" name="sex" class="weui-select"    firstValue="-1" firstText="请选择场地"   /> 
+					</div>
+				</div>
+				<div class="weui-cell">
+					<div class="weui-cell__hd"><label class="weui-label">其他信息</label></div>
+					<div class="weui-cell__bd">
+						<textarea class="weui-textarea" placeholder="请输入其他个人信息" rows="3"></textarea>
+					</div>
+				</div>
+				<div class="weui-cell weui-cell_switch">
+					<div class="weui-cell__bd">启用</div>
+					<div class="weui-cell__ft">
+						<input class="weui-switch" type="checkbox">
+					</div>
+				</div>
+			</div>
+			<a class="weui-btn weui-btn_default submitBtn" href="javascript:">保存</a>
+
+		</section>
+
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/jquery.min.js}"></script>
+		<script type="text/javascript">
+			$("input").blur(function() {
+				setTimeout(function() {
+					var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+					window.scrollTo(0, Math.max(scrollHeight - 1, 0));
+				}, 100);
+			});
+			$("textarea").blur(function() {
+				setTimeout(function() {
+					var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+					window.scrollTo(0, Math.max(scrollHeight - 1, 0));
+				}, 100);
+			});
+		</script>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/jquery-weui.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/template-web.js}"></script>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/pages/userInfo.js}"></script>
+	</body>
+
+</html>

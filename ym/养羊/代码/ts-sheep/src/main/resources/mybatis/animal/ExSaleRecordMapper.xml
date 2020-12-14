@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ts.animal.dao.ExSaleRecordDao">
+
+	<select id="list" resultType="java.util.Map">
+		SELECT
+			bs_sale_record.`id`,
+			bs_sale_record.`num`,
+			bs_sale_record.`batch_num`,
+			bs_sale_record.`type_name`,
+			bs_sale_record.`variety_name`,
+			bs_sale_record.`inputs_id`,
+			bs_sale_record.`customer_id`,
+			bs_sale_record.`dept_id`,
+			bs_sale_record.`other_info`,
+			bs_sale_record.`create_user`,
+			bs_sale_record.`create_time`,
+			bs_sale_record.`update_user`,
+			bs_sale_record.`update_time`,
+			bs_sale_record.`sale_num`,
+			bs_sale_record.`remark1`,
+			bs_sale_record.`remark2`,
+			bs_sale_record.`remark3`,
+			bs_customer.`name` customer_name
+		FROM
+			bs_sale_record
+		LEFT JOIN bs_customer ON bs_sale_record.customer_id = bs_customer.id
+		<include refid="com.ts.system.dao.DeptDao.subDept"/>
+		<include refid="com.ts.system.dao.DeptDao.subDeptByUser" /> 
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="num != null and num != ''"> and num = #{num} </if>
+		  		  <if test="batchNum != null and batchNum != ''"> and batch_num = #{batchNum} </if>
+		  		  <if test="typeName != null and typeName != ''"> and type_name = #{typeName} </if>
+		  		  <if test="varietyName != null and varietyName != ''"> and variety_name = #{varietyName} </if>
+		  		  <if test="inputsId != null and inputsId != ''"> and inputs_id = #{inputsId} </if>
+		  		  <if test="customerId != null and customerId != ''"> and customer_id = #{customerId} </if>
+		  		  <if test="deptId != null and deptId != ''"> and dept_id = #{deptId} </if>
+		  		  <if test="otherInfo != null and otherInfo != ''"> and other_info = #{otherInfo} </if>
+		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateUser != null and updateUser != ''"> and update_user = #{updateUser} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		   <if test="saleNum != null and saleNum != ''"> and sale_num = #{saleNum} </if>
+		  		  <if test="remark1 != null and remark1 != ''"> and remark1 = #{remark1} </if>
+		  		  <if test="remark2 != null and remark2 != ''"> and remark2 = #{remark2} </if>
+		  		  <if test="remark3 != null and remark3 != ''"> and remark3 = #{remark3} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+</mapper>

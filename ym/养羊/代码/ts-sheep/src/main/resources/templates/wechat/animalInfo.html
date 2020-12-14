@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>信息页</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/reset.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/border.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/weui.min.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/jquery-weui.min.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/common.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/wechat/pages/userInfo.css}" />
+	</head>
+
+	<body>
+		<section class="container" id="dataSession" th:if="${input} ne null" style="margin-bottom: 30px" >
+			<div class="headerBox wx-flex" >
+				<div class="headerBox-l">
+					<img th:src="${'../../../img/'+input.typeName+'.jpg'}" />
+				</div>
+				<div class="headerBox-r">
+					<p class="headerBox-r-t">
+					
+					<span style="  display:inline-block; width: 200px; word-wrap: break-word;word-break:break-all;">编号：[[${input.num}]]</span></p>
+<!-- 					<span th:text="${input.num}"></span> -->
+					<p class="headerBox-r-b">
+						<label>批次：</label><label th:text="${input.batchNum}"></label></br>
+						<span><label>种类：</label><label  th:if="${input.typeName != '' &&input.typeName!= null}"  th:text="${sysDicts['animal_type'][input.typeName].name}"></label></span>
+						<label>状态：</label>	<label  th:if="${input.status != '' &&input.status!= null}"   th:text="${sysDicts['inputs_status'][input.status].name}"></label>
+					</p>
+				</div>
+			</div>
+			<div class="formBox weui-cells weui-cells_form" style="font-size: 15px">
+				<div class="weui-cell ">
+					<div class="weui-cell__hd">
+						<label class="weui-label">品种</label>
+					</div>
+					<div class="weui-cell__bd" th:if="${input.varietyName != '' &&input.varietyName != null}">
+						<label   th:text="${sysDicts['animal_varieties'][input.varietyName].name}"></label>
+					</div>
+				</div>
+				<div class="weui-cell ">
+					<div class="weui-cell__hd">
+						<label class="weui-label">最初体重</label>
+					</div>
+					<div class="weui-cell__bd">
+						<label th:text="${input.initWeight}">200kg</label>
+					</div>
+				</div>
+				<div class="weui-cell ">
+					<div class="weui-cell__hd">
+						<label class="weui-label">目前体重</label>
+					</div>
+					<div class="weui-cell__bd">
+						<label  th:text="${input.curWeight}">250kg</label>
+					</div>
+				</div>
+				<div class="weui-cell ">
+					<div class="weui-cell__hd">
+						<label class="weui-label">养殖户</label>
+					</div>
+					<div class="weui-cell__bd">
+						<label  th:text="${sysDepts[input.deptId].name}">xxxx养殖户</label>
+					</div>
+				</div>
+				<div class="weui-cell ">
+					<div class="weui-cell__hd">
+						<label class="weui-label">入住场地</label>
+					</div>
+					<div class="weui-cell__bd" >
+<!-- 						<label  th:text="${input.}">xxxx场地</label> -->
+						<sys:dict th:onload="'get:animal/space/dict/list?cDeptId='+${session.sysUser.deptId}" 
+										  th:value="${input.spaceId}" superValueText="deptId" valueText="id" nameText="name"  id="spaceId" name="spaceId" 
+										class="weui-select"    />
+					</div>
+				</div>
+				<div class="weui-cell ">
+					<div class="weui-cell__hd">
+						<label class="weui-label">录入人员</label>
+					</div>
+					<div class="weui-cell__bd" th:if="${input.createUser != '' &&input.createUser != null}">
+						<label  th:text="${sysUsers[input.createUser].name}">管理员</label>
+					</div>
+				</div>
+				<div class="weui-cell ">
+					<div class="weui-cell__hd">
+						<label class="weui-label">入场时间</label>
+					</div>
+					<div class="weui-cell__bd">
+						<label  th:text="${#dates.format(input.createTime, 'yyyy-MM-dd HH:mm:ss')}"></label>
+					</div>
+				</div>
+			</div>
+			
+			<div>
+					 <div class="weui-cells__title">
+					    <label class="">检疫记录</label>
+					  </div>
+					  <div class="weui-loadmore weui-loadmore_line" th:if="${#lists.isEmpty(immuneRecords)}">
+						  <span class="weui-loadmore__tips">暂无检疫记录</span>
+					 </div>
+				   	 <div th:if="${not #lists.isEmpty(immuneRecords)}" th:each="immuneRecord:${immuneRecords}">
+					    <div class="weui-form-preview__item">
+					      <label class="weui-cells__title"  th:text="${#dates.format(immuneRecord.createTime, 'yyyy-MM-dd')}"></label>
+					      <label class="weui-cells__title"  th:text="${immuneRecord.immuneDrug}"></label>
+					      <label class="weui-cells__title"  th:text="${immuneRecord.immuneResult}">正常</label>
+					    </div>
+					  </div>
+			
+					 <div class="weui-cells__title">
+					    <label class="">检查记录</label>
+					  </div>
+					  <div class="weui-loadmore weui-loadmore_line" th:if="${#lists.isEmpty(checkRecords)}">
+						  <span class="weui-loadmore__tips">暂无检查记录</span>
+					 </div>
+				   	 <div th:if="${not #lists.isEmpty(checkRecords)}" th:each="checkRecord:${checkRecords}">
+					    <div class="weui-form-preview__item">
+					      <label class="weui-cells__title"  th:text="${#dates.format(checkRecord.createTime, 'yyyy-MM-dd')}"></label>
+					      <label class="weui-cells__title"  th:text="${checkRecord.checkWeight}"></label>
+					      <label class="weui-cells__title"  th:text="${checkRecord.checkResult}">正常</label>
+					    </div>
+					  </div>
+			</div>
+		</section>
+		
+		<section th:if="${input} eq null">
+		  <div class="weui-loadmore weui-loadmore_line" style="margin-top: 200px">
+			  <span class="weui-loadmore__tips">暂无该编号【[[${num}]]】数据</span>
+		 </div>
+		</section>
+		<section id="bootom">
+			<div style="position:fixed;bottom:0px; width: 100%;">
+				<a id="goBack" href="javascript:;" class="weui-btn weui-btn_default" >返回</a>
+			</div>
+		</section>
+
+		<script type="text/javascript">
+		var ctx = "[[${#request.getContextPath()}]]";
+		
+		//接收安卓发送过来的数据
+		function receiveAndroid(msg){
+			 var objMap = JSON.parse(msg);
+			 if(objMap.type=='1'){//接收标签数据
+				 if(objMap.code=='0'){//成功
+					 self.location.href=top.ctx +"/animal/inputs/info/"+objMap.data;
+				 }else{
+					 	playSound('-1');
+						$.toast("未采集到任何数据", "forbidden");
+				 }
+			 }
+		}
+	  
+		//调用安卓方法
+	  function androidJSaction(params ){
+		  var msg = JSON.stringify(params);
+			window.androidJS.action(msg);
+	  }
+	  
+	  //初始化播放声音
+	  function initSound(){
+		  if($('#dataSession').length==0){
+			  playSound('-1');
+		  }else{
+			  playSound('0');
+		  }
+	  }
+	  
+	  //监听 按手持机的扫描键
+		document.onkeydown = function (event) {
+			if(event.code=='F16'){//触发读取标签
+				getRFID();
+			}
+	  };
+	  
+	  //触发获取RFID标签
+	  function getRFID(){
+		  var params = {};
+			params.id=Math.random()+'';
+			params.code='0';//成功
+			params.type='0';//触发获取标签   安卓获取
+			androidJSaction(params);
+	  }
+	  
+	  //播放声音
+	  function playSound(isSeccess){
+		  var params = {};
+			params.id=Math.random()+'';
+			params.type='2';//播放声音
+			params.data=isSeccess;
+			androidJSaction(params);
+	  }
+	  
+	  
+</script>
+		
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/jquery-weui.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/template-web.js}"></script>
+		<script type="text/javascript" th:src="@{/js/appjs/wechat/js/pages/info.js}"></script>
+	</body>
+
+</html>
